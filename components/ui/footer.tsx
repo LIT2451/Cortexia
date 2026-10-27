@@ -35,6 +35,11 @@ export default function Footer() {
             <p className="text-sm text-indigo-200/65">
               &copy; {new Date().getFullYear()} {site.name}
             </p>
+            {site.relatedCompanies.map((c) => (
+              <p key={c.name} className="text-sm text-indigo-200/65">
+                {c.name} – Tax ID: {c.taxId}
+              </p>
+            ))}
           </div>
 
           {/* Quick Links */}

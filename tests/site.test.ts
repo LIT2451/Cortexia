@@ -3,10 +3,10 @@ import { navLinks, site } from "@/config/site";
 import { contactItems } from "@/lib/contact";
 
 describe("config/site", () => {
-  it("có email, phone mẫu; taxId để trống", () => {
-    expect(site.email).toBe("contact@digitalcortexia.com");
-    expect(site.phone).toBe("+84 24 3200 6688");
-    expect(site.taxId).toBe("");
+  it("có email, phone, MST của Cortexia", () => {
+    expect(site.email).toBe("founder@digitalcortexia.com");
+    expect(site.phone).toBe("0886 966 092");
+    expect(site.taxId).toBe("0111644930");
   });
 
   it("navLinks có đúng 5 URL (4.1, 4.2)", () => {
@@ -15,11 +15,12 @@ describe("config/site", () => {
 });
 
 describe("contactItems", () => {
-  it("cấu hình mặc định có địa chỉ, email, phone; ẩn taxId trống", () => {
+  it("cấu hình mặc định có địa chỉ, email, phone, MST", () => {
     const items = contactItems(site);
-    expect(items.map((i) => i.kind)).toEqual(["address", "email", "phone"]);
-    expect(items.find((i) => i.kind === "email")?.href).toBe("mailto:contact@digitalcortexia.com");
-    expect(items.find((i) => i.kind === "phone")?.href).toBe("tel:+842432006688");
+    expect(items.map((i) => i.kind)).toEqual(["address", "email", "phone", "taxId"]);
+    expect(items.find((i) => i.kind === "email")?.href).toBe("mailto:founder@digitalcortexia.com");
+    expect(items.find((i) => i.kind === "phone")?.href).toBe("tel:0886966092");
+    expect(items.find((i) => i.kind === "taxId")?.value).toBe("0111644930");
   });
 
   it("sinh mailto: và tel: khi có giá trị (2.6)", () => {

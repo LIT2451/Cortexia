@@ -7,6 +7,8 @@ export type SiteConfig = {
   email: string; // empty string hides the item
   phone: string; // display format, e.g. "+84 9xx xxx xxx"
   taxId: string;
+  /** Related companies shown in the footer with their tax IDs. */
+  relatedCompanies: { name: string; taxId: string }[];
 };
 
 export const site: SiteConfig = {
@@ -14,10 +16,10 @@ export const site: SiteConfig = {
   domain: "digitalcortexia.com",
   url: "https://digitalcortexia.com",
   address: "Tầng 6, tòa C, 22 Thành Công, Ba Đình, Hà Nội",
-  // SAMPLE contact details: replace email and phone with the real ones before going live.
-  email: "contact@digitalcortexia.com",
-  phone: "+84 24 3200 6688",
-  taxId: "",
+  email: "founder@digitalcortexia.com",
+  phone: "0886 966 092",
+  taxId: "0111644930",
+  relatedCompanies: [{ name: "Synthiq", taxId: "5600362025" }],
 };
 
 export type NavHref = "/" | "/about" | "/services" | "/portfolio" | "/contact";

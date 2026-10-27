@@ -24,10 +24,15 @@ describe("Footer", () => {
     for (const h of hrefs.filter((h) => !/^(mailto|tel):/.test(h))) expect(URLS).toContain(h);
   });
 
-  it("hiển thị email và số điện thoại mẫu kèm link", () => {
+  it("hiển thị email và số điện thoại kèm link", () => {
     const { container } = render(<Footer />);
-    expect(container.querySelector('a[href="mailto:contact@digitalcortexia.com"]')?.textContent).toBe("contact@digitalcortexia.com");
-    expect(container.querySelector('a[href="tel:+842432006688"]')?.textContent).toBe("+84 24 3200 6688");
+    expect(container.querySelector('a[href="mailto:founder@digitalcortexia.com"]')?.textContent).toBe("founder@digitalcortexia.com");
+    expect(container.querySelector('a[href="tel:0886966092"]')?.textContent).toBe("0886 966 092");
+  });
+
+  it("hiển thị MST của Synthiq", () => {
+    render(<Footer />);
+    expect(screen.getByText("Synthiq – Tax ID: 5600362025")).toBeTruthy();
   });
 
   it("không còn chữ của Template", () => {

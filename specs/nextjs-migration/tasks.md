@@ -99,7 +99,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 5.2 Viết `app/(default)/services/page.tsx` và `app/(default)/portfolio/page.tsx` (6 dịch vụ kèm ảnh có `alt`, case study từ `content/digital.ts`)
     - Kiểm chứng: `pnpm build` tạo `out/services.html`, `out/portfolio.html`
     - _Requirements: 1.1, 1.2, 1.3, 5.1, 8.2, NFR 2_
-  - [ ] 5.3 Viết `lib/validate-contact.ts` (`validateContact`, `EMAIL_RE`, `FIELD_ORDER`, hàm `firstInvalidField`)
+  - [x] 5.3 Viết `lib/validate-contact.ts` (`validateContact`, `EMAIL_RE`, `FIELD_ORDER`, hàm `firstInvalidField`)
     - Kiểm chứng: `pnpm test` pass
     - _Requirements: 6.3_
   - [ ] 5.4 Property P2: Validation form liên hệ

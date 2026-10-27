@@ -163,3 +163,11 @@
 - Requirements: 1.1, 1.2, 1.3, 5.1, 8.2
 - Commit: `spec(nextjs-migration): 5.2 Viết app/(default)/services/page.tsx và…`
 - Ghi chú: Thêm sections/service-list.tsx (ảnh dịch vụ, alt giữ như Site cũ) và sections/featured-case.tsx (case nổi bật là h2 như Site cũ). Tiêu đề 'Production Systems: OpenClaw & Hermes' đổi thành 'Production Systems: Digital Platforms in Operation' theo 8.2/8.5.
+
+## 5.3 Viết `lib/validate-contact.ts` (`validateContact`, `EMAIL_RE`, `FIELD_ORDER`, hàm `firstInvalidField`) — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:00
+- File đã đổi: `lib/validate-contact.ts`, `tests/validate-contact.test.ts`
+- Kiểm chứng: `pnpm test` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 6.3
+- Commit: `spec(nextjs-migration): 5.3 Viết lib/validate-contact.ts…`

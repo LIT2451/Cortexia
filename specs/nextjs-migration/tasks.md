@@ -69,7 +69,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `pnpm test -- layout` pass. `pnpm build` tạo `out/404.html`
     - _Requirements: 4.3, NFR 4_
 
-- [-] 4. Nội dung và khối giao diện
+- [x] 4. Nội dung và khối giao diện
   - [x] 4.1 Tạo `content/pages.ts` với văn bản giữ nguyên của Site cũ (tiêu đề, đoạn văn, 6 dịch vụ, quy trình, CTA, meta của 5 trang), tên thương hiệu đổi thành Cortexia
     - Lấy văn bản từ `tests/fixtures/legacy-text.json` và các file HTML cũ
     - Kiểm chứng: `pnpm lint` pass. Trong `content/pages.ts` không có "dvtechnic" (không phân biệt hoa thường)
@@ -88,7 +88,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Unit test `tests/sections.test.tsx`: `PageHero` render đúng 1 `h1`, `Cta` có link `/contact`, `Testimonials` không render `<img>`
     - Kiểm chứng: `pnpm test -- sections` và `pnpm lint` pass
     - _Requirements: 1.3, 3.1, 3.2, 5.5, NFR 2, NFR 3_
-  - [ ] 4.5 Copy 6 ảnh `images/services/service-*.jpg` sang `public/images/services/`
+  - [x] 4.5 Copy 6 ảnh `images/services/service-*.jpg` sang `public/images/services/`
     - Kiểm chứng: có đủ 6 file trong `public/images/services/`
     - _Requirements: 1.2_
 

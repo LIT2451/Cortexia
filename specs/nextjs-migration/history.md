@@ -137,3 +137,11 @@
 - Requirements: 1.3, 3.1, 3.2, 5.5
 - Commit: `spec(nextjs-migration): 4.4 Dựng components/sections/: page-hero.tsx…`
 - Ghi chú: Thêm styles.ts và section-heading.tsx dùng chung; spotlight.tsx sửa hết cảnh báo lint; app/(default)/page.tsx đổi tối thiểu sang sections để build không vỡ (trang đầy đủ ở 5.1).
+
+## 4.5 Copy 6 ảnh `images/services/service-*.jpg` sang `public/images/services/` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:55
+- File đã đổi: `public/images/services/service-cloud-devops.jpg`, `public/images/services/service-mobile-app.jpg`, `public/images/services/service-odc-teams.jpg`, `public/images/services/service-security-maintenance.jpg`, `public/images/services/service-software-eng.jpg`, `public/images/services/service-telecom-network.jpg`
+- Kiểm chứng: `test $(ls public/images/services/service-*.jpg | wc -l) -eq 6` → exit 0 (không có output) [spec-done tự chạy lại]
+- Requirements: 1.2
+- Commit: `spec(nextjs-migration): 4.5 Copy 6 ảnh images/services/service-*.jpg…`

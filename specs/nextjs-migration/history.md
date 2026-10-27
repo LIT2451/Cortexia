@@ -189,3 +189,11 @@
 - Requirements: 1.1, 1.3, 2.3, 6.1, 6.2, 6.3, 6.4
 - Commit: `spec(nextjs-migration): 5.5 Viết components/contact-form.tsx và…`
 - Ghi chú: Site cũ không có khối CTA trên trang Contact nên trang mới cũng không thêm (nút về /contact trên chính trang Contact là thừa). Form không gọi mạng, chỉ hiện role=status.
+
+## 5.6 Tạo `app/sitemap.ts`, `app/robots.ts` (`force-static`) và `public/CNAME` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:02
+- File đã đổi: `app/robots.ts`, `app/sitemap.ts`, `public/CNAME`
+- Kiểm chứng: `pnpm build && test $(grep -o "<loc>https://digitalcortexia.com[^<]*</loc>" out/sitemap.xml | wc -l) -eq 5 && grep -q "Sitemap: https://digitalcortexia.com/sitemap.xml" out/robots.txt && grep -qx digitalcortexia.com out/CNAME` → exit 0 (○  (Static)  prerendered as static content) [spec-done tự chạy lại]
+- Requirements: 5.3, 5.4
+- Commit: `spec(nextjs-migration): 5.6 Tạo app/sitemap.ts, app/robots.ts…`

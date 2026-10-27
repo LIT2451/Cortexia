@@ -206,3 +206,11 @@
 - Requirements: 1.4, 2.1, 4.2, 5.1, 5.2, 5.5, 7.4, 8.5
 - Commit: `spec(nextjs-migration): 6.1 Viết scripts/check-build.mjs theo mục…`
 - Ghi chú: Script có thêm cờ --root để test quét nguồn trong fixture thay vì repo thật. pnpm check trên out/ thật: OK.
+
+## 6.2 Test so khớp nội dung Site cũ `tests/legacy-content.test.ts`: mọi chuỗi trong `legacy-text.json` xuất hiện trong text của `out/<page>.html` tương ứng. Test bỏ qua nếu chưa có `out/` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:06
+- File đã đổi: `tests/legacy-content.test.ts`
+- Kiểm chứng: `pnpm build && pnpm test -- legacy-content` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 1.2, 1.3
+- Commit: `spec(nextjs-migration): 6.2 Test so khớp nội dung Site cũ…`

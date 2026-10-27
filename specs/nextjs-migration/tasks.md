@@ -121,7 +121,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Unit test `tests/check-build.test.ts` dùng fixture `tests/fixtures/build-bad/` (ảnh không tồn tại, 2 `h1`, chuỗi "dvtechnic", og:url tương đối) và `tests/fixtures/build-good/`: bản lỗi thoát mã 1 và liệt kê từng lỗi, bản đúng thoát mã 0
     - Kiểm chứng: `pnpm test -- check-build` pass
     - _Requirements: 1.4, 2.1, 4.2, 5.1, 5.2, 5.5, 7.4, 8.5, NFR 2_
-  - [ ] 6.2 Test so khớp nội dung Site cũ `tests/legacy-content.test.ts`: mọi chuỗi trong `legacy-text.json` xuất hiện trong text của `out/<page>.html` tương ứng. Test bỏ qua nếu chưa có `out/`.
+  - [x] 6.2 Test so khớp nội dung Site cũ `tests/legacy-content.test.ts`: mọi chuỗi trong `legacy-text.json` xuất hiện trong text của `out/<page>.html` tương ứng. Test bỏ qua nếu chưa có `out/`.
     - Kiểm chứng: `pnpm build && pnpm test -- legacy-content` pass
     - _Requirements: 1.2, 1.3_
   - [ ] 6.3 Chạy `pnpm build && pnpm check` và sửa mọi lỗi tới khi đạt. Phục vụ `out/` bằng `serve` (ghim phiên bản qua `pnpm dlx`), dùng `curl` kiểm tra 5 URL trả 200 và một URL lạ trả trang 404.

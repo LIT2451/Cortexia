@@ -46,8 +46,8 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `pnpm test -- metadata` pass
     - _Kiểm chứng: Requirements 5.2_
 
-- [ ] 3. Header, Footer, logo và layout
-  - [ ] 3.1 Viết `logo.tsx` (wordmark "Cortexia", link `/`, `aria-label`), `app/icon.svg` (chữ "C" gradient) và `app/opengraph-image.tsx` (1200×630, có `export const dynamic = "force-static"`)
+- [-] 3. Header, Footer, logo và layout
+  - [x] 3.1 Viết `logo.tsx` (wordmark "Cortexia", link `/`, `aria-label`), `app/icon.svg` (chữ "C" gradient) và `app/opengraph-image.tsx` (1200×630, có `export const dynamic = "force-static"`)
     - Kiểm chứng: `pnpm build` tạo `out/icon.svg` và ảnh OG trong `out/`
     - _Requirements: 2.2_
   - [ ] 3.2 Sửa `components/ui/header.tsx`: menu 5 liên kết, nút "Contact Us", menu di động dưới `md`, `isActive` + `aria-current="page"`, viền focus nhìn thấy được

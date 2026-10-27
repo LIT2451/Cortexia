@@ -60,3 +60,12 @@
 - Requirements: 5.2
 - Property: P4 pass (100 lần)
 - Commit: `spec(nextjs-migration): 2.4 Property P4: Metadata tuyệt đối`
+
+## 3.1 Viết `logo.tsx` (wordmark "Cortexia", link `/`, `aria-label`), `app/icon.svg` (chữ "C" gradient) và `app/opengraph-image.tsx` (1200×630, có `export const dynamic = "force-static"`) — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:46
+- File đã đổi: `app/icon.svg`, `app/opengraph-image.tsx`, `components/ui/logo.tsx`, `public/images/logo.svg`
+- Kiểm chứng: `pnpm build && test -f out/icon.svg && test -f out/opengraph-image` → exit 0 (○  (Static)  prerendered as static content) [spec-done tự chạy lại]
+- Requirements: 2.2
+- Commit: `spec(nextjs-migration): 3.1 Viết logo.tsx (wordmark "Cortexia", link…`
+- Ghi chú: Xoá public/images/logo.svg của Template (không còn dùng). File OG xuất ra không có đuôi, kiểm tra MIME ở 6.3

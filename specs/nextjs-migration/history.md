@@ -102,3 +102,11 @@
 - Kiểm chứng: `pnpm test -- layout && pnpm build && test -f out/404.html` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
 - Requirements: 4.3
 - Commit: `spec(nextjs-migration): 3.5 Sửa app/(default)/layout.tsx: AOS tắt khi…`
+
+## 4.1 Tạo `content/pages.ts` với văn bản giữ nguyên của Site cũ (tiêu đề, đoạn văn, 6 dịch vụ, quy trình, CTA, meta của 5 trang), tên thương hiệu đổi thành Cortexia — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:51
+- File đã đổi: `content/pages.ts`
+- Kiểm chứng: `pnpm lint && ! grep -qi dvtechnic content/pages.ts` → exit 0 (npx @next/codemod@canary next-lint-to-eslint-cli .) [spec-done tự chạy lại]
+- Requirements: 1.2, 2.1, 5.1
+- Commit: `spec(nextjs-migration): 4.1 Tạo content/pages.ts với văn bản giữ…`

@@ -69,8 +69,8 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `pnpm test -- layout` pass. `pnpm build` tạo `out/404.html`
     - _Requirements: 4.3, NFR 4_
 
-- [ ] 4. Nội dung và khối giao diện
-  - [ ] 4.1 Tạo `content/pages.ts` với văn bản giữ nguyên của Site cũ (tiêu đề, đoạn văn, 6 dịch vụ, quy trình, CTA, meta của 5 trang), tên thương hiệu đổi thành Cortexia
+- [-] 4. Nội dung và khối giao diện
+  - [x] 4.1 Tạo `content/pages.ts` với văn bản giữ nguyên của Site cũ (tiêu đề, đoạn văn, 6 dịch vụ, quy trình, CTA, meta của 5 trang), tên thương hiệu đổi thành Cortexia
     - Lấy văn bản từ `tests/fixtures/legacy-text.json` và các file HTML cũ
     - Kiểm chứng: `pnpm lint` pass. Trong `content/pages.ts` không có "dvtechnic" (không phân biệt hoa thường)
     - _Requirements: 1.2, 2.1, 5.1_

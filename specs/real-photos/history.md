@@ -17,3 +17,12 @@
 - Requirements: 1.3, 1.4
 - Commit: `spec(real-photos): 2 Thay ảnh Open Graph vẽ bằng code bằng…`
 - Ghi chú: Xoá opengraph-image.tsx, thêm opengraph-image.jpg 1200x630 cắt từ ảnh hero (129 KB) và alt.txt; metadata trỏ /opengraph-image.jpg
+
+## 3 Chạy build, check, lint, test toàn bộ và sửa mọi lỗi — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 12:07
+- File đã đổi: không có (ngoài specs/)
+- Kiểm chứng: `pnpm build && pnpm check && pnpm lint && pnpm test && pnpm exec tsc --noEmit` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 1.1, 1.2, 1.3, 1.4
+- Commit: `spec(real-photos): 3 Chạy build, check, lint, test toàn bộ và sửa mọi…` (chỉ cập nhật specs/)
+- Ghi chú: Build, check, lint, test, tsc đều đạt

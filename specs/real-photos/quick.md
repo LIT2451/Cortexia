@@ -56,6 +56,6 @@ Phân bổ ảnh (tất cả ảnh miễn phí trên Unsplash):
 - [x] 2 Thay ảnh Open Graph vẽ bằng code bằng `app/opengraph-image.jpg` tĩnh, cập nhật `lib/metadata.ts` và test
   - Kiểm chứng: `pnpm build && pnpm check && pnpm test` đạt và `out/index.html` có `og:image` trỏ tới file jpg
   - _Requirements: 1.3, 1.4_
-- [ ] 3 Chạy build, check, lint, test toàn bộ và sửa mọi lỗi
+- [x] 3 Chạy build, check, lint, test toàn bộ và sửa mọi lỗi
   - Kiểm chứng: `pnpm build && pnpm check && pnpm lint && pnpm test` đạt
   - _Requirements: 1.1, 1.2, 1.3, 1.4_

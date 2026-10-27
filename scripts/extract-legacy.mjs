@@ -1,13 +1,17 @@
-// Trích văn bản nội dung của 5 trang Site cũ (DVTechnic) ra tests/fixtures/legacy-text.json.
+// Trích văn bản nội dung của 5 trang Site cũ ra tests/fixtures/legacy-text.json.
 // Dùng làm chuẩn so khớp cho Requirement 1.2: Site mới phải giữ mọi tiêu đề, đoạn văn
 // và danh sách dịch vụ của Site cũ, chỉ đổi tên thương hiệu.
 // Phần thuộc Requirement 8 (số liệu, case study, lời chứng thực) bị loại bỏ.
+//
+// Site cũ đã bị xoá khỏi repo (task 7.1). Muốn chạy lại, khôi phục 5 file HTML từ
+// lịch sử git vào gốc repo, ví dụ: git checkout 300a79a -- index.html about.html ...
 //
 // Chạy: node scripts/extract-legacy.mjs
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { CALL_RECORDS, FORBIDDEN, OLD_BRAND, OLD_PRODUCTS } from "./forbidden-names.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const outFile = join(root, "tests", "fixtures", "legacy-text.json");
@@ -24,7 +28,7 @@ const PAGES = {
   },
   services: {
     file: "services.html",
-    exclude: [["<!-- Flagship Production Deployments (OpenClaw & Hermes) -->", "<!-- Engagement Models Section -->"]],
+    exclude: [[`<!-- Flagship Production Deployments (${OLD_PRODUCTS.join(" & ")}) -->`, "<!-- Engagement Models Section -->"]],
   },
   portfolio: {
     file: "portfolio.html",
@@ -34,7 +38,7 @@ const PAGES = {
       ["<!-- Categorized Case Studies Grid -->", "<!-- Call to Action Banner -->"],
     ],
   },
-  // Thẻ liên hệ chứa địa chỉ, email, điện thoại, mã số thuế của DVTechnic:
+  // Thẻ liên hệ chứa địa chỉ, email, điện thoại, mã số thuế của thương hiệu cũ:
   // Site mới lấy các mục này từ config/site.ts (Requirement 2.3, 2.5, 2.7).
   contact: {
     file: "contact.html",
@@ -43,7 +47,7 @@ const PAGES = {
 };
 
 // Chuỗi không được còn trong fixture (Requirement 2.1, 8.5).
-const FORBIDDEN = [/dvtechnic/i, /openclaw/i, /hermes/i, /\bCDR\b/];
+const FIXTURE_FORBIDDEN = FORBIDDEN.slice(0, 4).map(([re]) => re);
 
 const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", rsquo: "’", lsquo: "‘", rdquo: "”", ldquo: "“", mdash: "—", ndash: "–", copy: "©", middot: "·" };
 
@@ -64,10 +68,10 @@ function toText(html) {
     .trim();
 }
 
-// Đổi thương hiệu. "CDR" viết đầy đủ thành "call detail record" để giữ nghĩa
-// mà vẫn đáp ứng Requirement 8.5 (không còn chuỗi "CDR").
+// Đổi thương hiệu. Viết tắt bản ghi cuộc gọi đổi thành "call detail record" để giữ nghĩa
+// mà vẫn đáp ứng Requirement 8.5.
 function rebrand(s) {
-  return s.replace(/DVTechnic/gi, "Cortexia").replace(/\bCDR\b/g, "call detail record");
+  return s.replace(new RegExp(OLD_BRAND, "gi"), "Cortexia").replace(new RegExp(`\\b${CALL_RECORDS}\\b`, "g"), "call detail record");
 }
 
 function cut(html, start, end, file) {
@@ -78,11 +82,7 @@ function cut(html, start, end, file) {
 }
 
 function extractPage({ file, exclude }) {
-  const path = join(root, file);
-  if (!existsSync(path)) {
-    throw new Error(`Không tìm thấy ${file}. Site cũ đã bị xoá; fixture hiện có trong tests/fixtures/legacy-text.json vẫn dùng được.`);
-  }
-  let html = readFileSync(path, "utf8");
+  let html = readFileSync(join(root, file), "utf8");
 
   // Bỏ phần không phải nội dung trang.
   html = html
@@ -117,11 +117,21 @@ function extractPage({ file, exclude }) {
 }
 
 function main() {
+  const missing = Object.values(PAGES)
+    .map((p) => p.file)
+    .filter((f) => !existsSync(join(root, f)));
+  if (missing.length > 0) {
+    throw new Error(
+      `không tìm thấy HTML của Site cũ (${missing.join(", ")}). Site cũ đã bị xoá khỏi repo; ` +
+        "fixture hiện có trong tests/fixtures/legacy-text.json vẫn dùng được. " +
+        "Muốn trích lại, khôi phục các file này từ lịch sử git vào gốc repo.",
+    );
+  }
   const out = {};
   for (const [page, cfg] of Object.entries(PAGES)) {
     const texts = extractPage(cfg);
     if (texts.length === 0) throw new Error(`${cfg.file}: không trích được văn bản nào`);
-    const bad = texts.filter((t) => FORBIDDEN.some((re) => re.test(t)));
+    const bad = texts.filter((t) => FIXTURE_FORBIDDEN.some((re) => re.test(t)));
     if (bad.length) throw new Error(`${cfg.file}: còn chuỗi cấm:\n  ${bad.join("\n  ")}`);
     out[page] = texts;
   }

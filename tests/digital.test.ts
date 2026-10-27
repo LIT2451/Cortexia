@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { FORBIDDEN } from "../scripts/forbidden-names.mjs";
 import { featuredCase, portfolioCases, serviceCases, stats, testimonials } from "@/content/digital";
 
 const source = readFileSync(join(process.cwd(), "content/digital.ts"), "utf8");
@@ -22,8 +23,8 @@ describe("content/digital", () => {
     for (const t of testimonials) expect(Object.keys(t).sort()).toEqual(["companyType", "quote", "role"]);
   });
 
-  it("không còn tên OpenClaw, Hermes, CDR (8.5)", () => {
+  it("không còn tên sản phẩm cũ và viết tắt bản ghi cuộc gọi (8.5)", () => {
     const all = JSON.stringify({ featuredCase, portfolioCases, serviceCases, testimonials, stats });
-    expect(all).not.toMatch(/openclaw|hermes|\bCDR\b/i);
+    for (const [re] of FORBIDDEN as [RegExp, string][]) expect(all).not.toMatch(re);
   });
 });

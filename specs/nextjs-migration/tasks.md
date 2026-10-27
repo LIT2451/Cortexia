@@ -128,8 +128,8 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `pnpm check` thoát mã 0. 5 URL trả 200
     - _Requirements: 1.1, 2.1, 4.1, 4.3, 5.3, 5.4, 7.1, 7.2_
 
-- [ ] 7. Hoàn tất
-  - [ ] 7.1 Xoá mã Site cũ: `index.html`, `about.html`, `services.html`, `portfolio.html`, `contact.html`, `css/`, `js/`, `images/`, `fonts/`, `CNAME`, `robots.txt`, `sitemap.xml` ở gốc. Giữ `scripts/extract-legacy.mjs` nhưng cho nó báo lỗi rõ ràng khi không còn file HTML cũ.
+- [-] 7. Hoàn tất
+  - [x] 7.1 Xoá mã Site cũ: `index.html`, `about.html`, `services.html`, `portfolio.html`, `contact.html`, `css/`, `js/`, `images/`, `fonts/`, `CNAME`, `robots.txt`, `sitemap.xml` ở gốc. Giữ `scripts/extract-legacy.mjs` nhưng cho nó báo lỗi rõ ràng khi không còn file HTML cũ.
     - Kiểm chứng: `pnpm build && pnpm check && pnpm test` pass. Tìm "dvtechnic" trong repo (trừ `specs/`, `.git/`) ra 0 kết quả
     - _Requirements: 2.1, 8.5_
   - [ ] 7.2 Viết lại `README.md`: giới thiệu Cortexia, yêu cầu Node/pnpm, `pnpm install`, `pnpm dev`, `pnpm build`, `pnpm check`, `pnpm test`, cách deploy `out/` lên GitHub Pages (custom domain `digitalcortexia.com`), nơi sửa thông tin thương hiệu (`config/site.ts`) và nội dung mẫu cần xác nhận (`content/digital.ts`). Thêm checklist kiểm tra thủ công: Lighthouse mobile (Performance ≥ 85, Accessibility ≥ 90, SEO ≥ 95), độ rộng 360/768/1280/1920px, bàn phím, reduced motion.

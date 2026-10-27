@@ -5,19 +5,12 @@
 
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, extname, join, relative, resolve } from "node:path";
+import { FORBIDDEN } from "./forbidden-names.mjs";
 
 const ORIGIN = "https://digitalcortexia.com";
 const ROUTES = ["/", "/about", "/services", "/portfolio", "/contact"];
 const PAGES = ["index.html", "about.html", "services.html", "portfolio.html", "contact.html", "404.html"];
 const SOURCE_DIRS = ["app", "components", "config", "content", "lib", "public"];
-const FORBIDDEN = [
-  [/dvtechnic/i, "dvtechnic"],
-  [/openclaw/i, "OpenClaw"],
-  [/hermes/i, "Hermes"],
-  [/\bCDR\b/, "CDR"],
-  [/open pro\b/i, "Open PRO"],
-  [/cruip/i, "Cruip"],
-];
 // File names of the template's sample media.
 const SAMPLE_MEDIA = /\.(mp4|webm|mov)$|testimonial-\d|workflow-0\d|features\.png|hero-image|avatar/i;
 const TEXT_EXT = new Set([".html", ".txt", ".xml", ".js", ".css", ".json", ".svg", ".ts", ".tsx", ".mjs", ".md", ""]);

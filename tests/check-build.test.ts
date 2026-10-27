@@ -1,15 +1,32 @@
 import { spawnSync } from "node:child_process";
+import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { OLD_BRAND } from "../scripts/forbidden-names.mjs";
 
 const script = join(process.cwd(), "scripts/check-build.mjs");
 const fixtures = join(process.cwd(), "tests/fixtures");
 
 // --root points at the fixture itself so the source scan does not read the real repo.
-function run(name: string) {
-  const dir = join(fixtures, name);
+function runDir(dir: string) {
   const r = spawnSync(process.execPath, [script, dir, "--root", dir], { encoding: "utf8" });
   return { code: r.status, output: r.stdout + r.stderr };
+}
+const run = (name: string) => runDir(join(fixtures, name));
+
+// The bad fixture holds a placeholder instead of the old brand, so the repo stays free of it.
+// Copy it to a temp dir and put the real name back before checking.
+function runBad() {
+  const dir = mkdtempSync(join(tmpdir(), "check-build-bad-"));
+  try {
+    cpSync(join(fixtures, "build-bad"), dir, { recursive: true });
+    const index = join(dir, "index.html");
+    writeFileSync(index, readFileSync(index, "utf8").replace("__OLD_BRAND__", OLD_BRAND));
+    return runDir(dir);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 }
 
 describe("scripts/check-build.mjs", () => {
@@ -20,11 +37,11 @@ describe("scripts/check-build.mjs", () => {
   });
 
   it("bản lỗi thoát mã 1 và liệt kê từng lỗi", () => {
-    const r = run("build-bad");
+    const r = runBad();
     expect(r.code).toBe(1);
     expect(r.output).toContain("index.html: tài nguyên nội bộ không tồn tại: /images/missing.png");
     expect(r.output).toContain("index.html: có 2 thẻ h1 (cần đúng 1)");
-    expect(r.output).toMatch(/index\.html: chứa chuỗi cấm "dvtechnic"/);
+    expect(r.output).toContain(`index.html: chứa chuỗi cấm "${OLD_BRAND.toLowerCase()}"`);
     expect(r.output).toContain("index.html: og:url không tuyệt đối trên https://digitalcortexia.com: /about");
   });
 

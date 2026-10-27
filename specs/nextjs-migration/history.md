@@ -34,3 +34,12 @@
 - Kiểm chứng: `pnpm test` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
 - Requirements: 2.4, 2.5, 2.6, 2.7, 4.2
 - Commit: `spec(nextjs-migration): 2.1 Tạo config/site.ts và lib/contact.ts`
+
+## 2.2 Property P1: Hiển thị mục liên hệ theo cấu hình — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:44
+- File đã đổi: `components/ui/contact-list.tsx`, `tests/properties/contact-items.property.test.tsx`
+- Kiểm chứng: `pnpm test -- contact-items` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 2.5, 2.6
+- Property: P1 pass (100 lần)
+- Commit: `spec(nextjs-migration): 2.2 Property P1: Hiển thị mục liên hệ theo cấu…`

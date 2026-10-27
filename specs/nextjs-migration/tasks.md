@@ -31,7 +31,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Unit test `tests/site.test.ts`: `email`, `phone`, `taxId` bằng `""`, `navLinks` có đúng 5 URL ở 4.1
     - Kiểm chứng: `pnpm test` pass
     - _Requirements: 2.4, 2.5, 2.6, 2.7, 4.2_
-  - [ ] 2.2 Property P1: Hiển thị mục liên hệ theo cấu hình
+  - [x] 2.2 Property P1: Hiển thị mục liên hệ theo cấu hình
     - *Với mọi* `SiteConfig` sinh ngẫu nhiên, trong đó `email`, `phone`, `taxId` lấy từ `""`, chuỗi chỉ có khoảng trắng hoặc chuỗi hợp lệ, `contactItems(cfg)` chứa mục loại k khi và chỉ khi `cfg[k].trim() !== ""`. Mục email luôn có `href === "mailto:" + email`, mục phone luôn có `href` bắt đầu bằng `tel:` và chỉ gồm chữ số và `+`. Render `ContactList` với cấu hình đó không chứa nhãn hay biểu tượng của mục bị bỏ.
     - Viết bằng fast-check trong `tests/properties/contact-items.property.test.tsx`, `numRuns: 100`. Phần render cần `components/ui/contact-list.tsx` (tạo trong task này, nhận `cfg` qua props, mặc định là `site`)
     - Kiểm chứng: `pnpm test -- contact-items` pass

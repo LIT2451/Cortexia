@@ -28,7 +28,7 @@ export default function Home() {
       <FeatureGrid {...services} />
       <ImageSplit {...about} />
       <CaseStudies {...automation} items={aiCases} />
-      <FeatureGrid eyebrow={whyUs.eyebrow} title={whyUs.title} text={whyUs.text} items={whyUs.items} link={whyUs.link} />
+      <FeatureGrid {...whyUs} />
       <FeatureGrid
         eyebrow={techStack.eyebrow}
         title={techStack.title}

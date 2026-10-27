@@ -85,7 +85,7 @@ Rà soát nội dung:
 - [x] 3 Phân bổ lại ảnh theo bảng: lấy ảnh từ commit `300a79a`, nén, lưu vào `public/images/home/`, xoá bản sao cũ, nén 6 ảnh Services, cập nhật đường dẫn và alt trong content
   - Kiểm chứng: `pnpm build && pnpm check && pnpm test` đạt (gồm quy tắc không trùng ảnh) và không file nào trong `public/images` > 300 KB
   - _Requirements: 1.2, 1.4_
-- [ ] 4 Sửa nội dung theo bảng rà soát (a–h), cập nhật `legacy-text.json` và test liên quan
+- [x] 4 Sửa nội dung theo bảng rà soát (a–h), cập nhật `legacy-text.json` và test liên quan
   - Kiểm chứng: `pnpm test` đạt
   - _Requirements: 1.5, 1.6_
 - [ ] 5 Chạy build, check, lint, test toàn bộ và sửa mọi lỗi

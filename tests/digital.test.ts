@@ -18,7 +18,7 @@ describe("content/digital", () => {
   });
 
   it("có lời chứng thực, mỗi mục chỉ có quote, role, companyType (8.3)", () => {
-    // Site cũ không có khối lời chứng thực nào; giữ 3 mục mẫu cho khối Testimonials ở Home/About.
+    // Site cũ không có khối lời chứng thực nào; giữ 3 mục mẫu cho khối Testimonials ở Home.
     expect(testimonials).toHaveLength(3);
     for (const t of testimonials) expect(Object.keys(t).sort()).toEqual(["companyType", "quote", "role"]);
   });

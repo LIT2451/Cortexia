@@ -18,7 +18,8 @@ describe("ContactForm", () => {
     expect(screen.getByLabelText(/^Business Email/)).toHaveProperty("id", "email");
     expect(screen.getByLabelText("Service Required")).toHaveProperty("id", "service");
     expect(screen.getByLabelText(/^Message/)).toHaveProperty("id", "message");
-    expect(screen.getAllByRole("option")).toHaveLength(7);
+    expect(screen.getAllByRole("option")).toHaveLength(8);
+    expect(screen.getByRole("option", { name: "AI & Process Automation" })).toBeTruthy();
   });
 
   it("gửi rỗng: lỗi cạnh ô, aria-invalid, focus vào Name", () => {

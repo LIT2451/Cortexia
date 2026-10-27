@@ -26,3 +26,12 @@
 - Requirements: 1.2, 1.4
 - Commit: `spec(site-consistency): 3 Phân bổ lại ảnh theo bảng: lấy ảnh từ commit…`
 - Ghi chú: 8 ảnh Home lấy từ 8 file site cũ khác nhau (blob khác ảnh Services), xoá bản sao; 6 ảnh Services nén về ≤300 KB; thêm test src không trùng và giới hạn 300 KB cho toàn public/images
+
+## 4 Sửa nội dung theo bảng rà soát (a–h), cập nhật `legacy-text.json` và test liên quan — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:52
+- File đã đổi: `app/(default)/about/page.tsx`, `app/(default)/page.tsx`, `content/digital.ts`, `content/pages.ts`, `tests/contact-form.test.tsx`, `tests/content-consistency.test.tsx`, `tests/digital.test.ts`, `tests/fixtures/legacy-text.json`
+- Kiểm chứng: `pnpm test` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 1.5, 1.6
+- Commit: `spec(site-consistency): 4 Sửa nội dung theo bảng rà soát (a–h), cập…`
+- Ghi chú: a–h: hero Services/Portfolio viết lại (cập nhật legacy-text.json), case Services đổi sang Cloud Contact Center & VoIP, case AI đổi sang Predictive Fleet Maintenance, uptime 99.99%, bỏ link trùng Why Us, About bỏ Stats/Testimonials, meta Home và form thêm AI & Process Automation; thêm tests/content-consistency.test.tsx

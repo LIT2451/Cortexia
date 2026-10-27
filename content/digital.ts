@@ -18,7 +18,7 @@ export const stats: Stat[] = [
   { value: "120+", label: "Digital Transformation Projects" },
   { value: "40+", label: "Digital Platforms Launched" },
   { value: "5M+", label: "End Users Served" },
-  { value: "99.95%", label: "Platform Uptime" },
+  { value: "99.99%", label: "Platform Uptime" },
 ];
 
 export const featuredCase: CaseStudy = {
@@ -112,15 +112,15 @@ export const portfolioCases: CaseStudy[] = [
 
 export const serviceCases: CaseStudy[] = [
   {
-    slug: "ai-customer-service-assistant",
-    name: "AI Customer Service Assistant",
-    industry: "Telecommunications & Digital Services",
+    slug: "cloud-contact-center-voip",
+    name: "Cloud Contact Center & VoIP Platform",
+    industry: "Telecommunications",
     summary:
-      "Generative AI assistant on web chat and messaging apps that answers billing and service questions from a private knowledge base and hands off to human agents when needed.",
-    technologies: ["Python", "LLM APIs", "Vector Database", "Docker"],
+      "Multi-tenant cloud contact center on FreeSWITCH with SIP trunking, WebRTC softphones, IVR and real-time call analytics, replacing on-premise PBX hardware across branches.",
+    technologies: ["FreeSWITCH", "SIP Trunking", "WebRTC", "Golang", "Kubernetes"],
     results: [
-      { metric: "65%", label: "Inquiries resolved without an agent" },
-      { metric: "24/7", label: "Customer support coverage" },
+      { metric: "99.99%", label: "Voice platform availability" },
+      { metric: "45%", label: "Lower telephony cost" },
     ],
   },
   {
@@ -166,15 +166,15 @@ export const aiCases: CaseStudy[] = [
     image: { src: "/images/home/ai-support-copilot.jpg", alt: "Kubernetes cloud platform dashboard" },
   },
   {
-    slug: "predictive-operations-automation",
-    name: "Predictive Analytics & Operations Automation",
-    industry: "Manufacturing & Logistics",
+    slug: "predictive-fleet-maintenance",
+    name: "Predictive Fleet Maintenance",
+    industry: "Logistics & Transportation",
     summary:
-      "Machine learning models forecast demand and detect equipment anomalies from IoT data, then trigger automated work orders and replenishment in the ERP.",
-    technologies: ["Python", "scikit-learn", "Kafka", "Airflow", "AWS"],
+      "Machine learning models detect engine and component anomalies from vehicle telematics data, then automatically schedule maintenance and create work orders before breakdowns happen.",
+    technologies: ["Python", "scikit-learn", "Kafka", "Airflow", "AWS IoT"],
     results: [
       { metric: "30%", label: "Less unplanned downtime" },
-      { metric: "92%", label: "Forecast accuracy" },
+      { metric: "20%", label: "Lower maintenance cost" },
     ],
     image: { src: "/images/home/ai-fleet-maintenance.jpg", alt: "Commercial fleet IoT telematics dashboard" },
   },

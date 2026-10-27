@@ -67,7 +67,7 @@ export const home = {
   meta: {
     title: "Cortexia - Enterprise Software Outsourcing & Telecom Solutions",
     description:
-      "Cortexia provides enterprise software development, offshore engineering teams, and telecommunications infrastructure solutions for global businesses.",
+      "Cortexia provides enterprise software development, AI and process automation, offshore engineering teams, and telecommunications infrastructure solutions for global businesses.",
   } satisfies Meta,
   hero: {
     titleLines: ["Engineering Reliable Software &", "Scalable Telecom Solutions", "For Global Enterprises"],
@@ -117,7 +117,7 @@ export const home = {
   automation: {
     eyebrow: "Automation & AI",
     title: "Automation & AI Projects in Production",
-    text: "We turn repetitive work into automated workflows and add AI where it creates measurable value: document processing, customer support and predictive operations.",
+    text: "We turn repetitive work into automated workflows and add AI where it creates measurable value: document processing, customer support and predictive maintenance.",
   },
   whyUs: {
     eyebrow: "Why Choose Us",
@@ -137,7 +137,6 @@ export const home = {
         text: "Dedicated Team, Fixed-price milestones, or Time & Materials to fit your exact budget.",
       },
     ] satisfies Item[],
-    link: { label: "Discover Our Story", href: "/about" as const },
   },
   techStack: {
     eyebrow: "Technology Capabilities",
@@ -245,7 +244,7 @@ export const services = {
   hero: {
     eyebrow: "Full-Stack Outsourcing & Telecom Solutions",
     title: "Enterprise Services & Solutions",
-    text: "From carrier-grade telecom platforms and autonomous AI agent systems to dedicated offshore engineering pods.",
+    text: "From custom software and AI-powered automation to carrier-grade telecom platforms and dedicated offshore engineering pods.",
   },
   intro: {
     eyebrow: "Engineering Excellence",
@@ -297,7 +296,7 @@ export const portfolio = {
   hero: {
     eyebrow: "Explore Our Domain Expertise",
     title: "Our Engineering Portfolio",
-    text: "Explore verified case studies spanning real-time telecom intelligence, autonomous AI agent gateways, and mission-critical ERPs.",
+    text: "Explore case studies across banking, retail and commerce, healthcare, data and AI, and cloud modernization.",
   },
   cases: {
     eyebrow: "Featured Work",
@@ -354,6 +353,7 @@ export const contact = {
       "Telecom & VoIP Infrastructure",
       "Mobile Application (iOS/Android)",
       "Cloud Migration & DevOps",
+      "AI & Process Automation",
       "General Partnership Inquiry",
     ],
     submit: "Submit Inquiry",

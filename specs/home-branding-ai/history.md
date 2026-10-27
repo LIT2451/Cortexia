@@ -26,3 +26,11 @@
 - Requirements: 1.2, 1.3, 1.4, 1.6
 - Commit: `spec(home-branding-ai): 3 Thêm nội dung home.about, home.automation…`
 - Ghi chú: aiCases (3 dự án mẫu) nằm trong content/digital.ts (đã ghi chú NỘI DUNG MẪU); home.about và home.automation là nội dung mới, có comment trong content/pages.ts.
+
+## 4 Chạy build, check, lint, test toàn bộ và sửa mọi lỗi — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:29
+- File đã đổi: không có (ngoài specs/)
+- Kiểm chứng: `pnpm build && pnpm check && pnpm lint && pnpm test` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 1.5, 1.6
+- Commit: `spec(home-branding-ai): 4 Chạy build, check, lint, test toàn bộ và sửa…` (chỉ cập nhật specs/)

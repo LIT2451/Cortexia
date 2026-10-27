@@ -214,3 +214,12 @@
 - Kiểm chứng: `pnpm build && pnpm test -- legacy-content` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
 - Requirements: 1.2, 1.3
 - Commit: `spec(nextjs-migration): 6.2 Test so khớp nội dung Site cũ…`
+
+## 6.3 Chạy `pnpm build && pnpm check` và sửa mọi lỗi tới khi đạt. Phục vụ `out/` bằng `serve` (ghim phiên bản qua `pnpm dlx`), dùng `curl` kiểm tra 5 URL trả 200 và một URL lạ trả trang 404 — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:06
+- File đã đổi: không có (ngoài specs/)
+- Kiểm chứng: `pnpm check && curl -sf -o /dev/null http://localhost:4173/ && curl -sf -o /dev/null http://localhost:4173/about && curl -sf -o /dev/null http://localhost:4173/services && curl -sf -o /dev/null http://localhost:4173/portfolio && curl -sf -o /dev/null http://localhost:4173/contact && test "$(curl -s -o /dev/null -w %{http_code} http://localhost:4173/nope-xyz)" = 404` → exit 0 (check-build: OK (out)) [spec-done tự chạy lại]
+- Requirements: 1.1, 2.1, 4.1, 4.3, 5.3, 5.4, 7.1, 7.2
+- Commit: `spec(nextjs-migration): 6.3 Chạy pnpm build && pnpm check và sửa mọi…` (chỉ cập nhật specs/)
+- Ghi chú: Phục vụ bằng pnpm dlx serve@14.2.4 out -l 4173. 5 URL trả 200, /nope-xyz trả 404 với trang Page not found có link về /. File out/opengraph-image không có đuôi nên static server trả không kèm content-type image/png.

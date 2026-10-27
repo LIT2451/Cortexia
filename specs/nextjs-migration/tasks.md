@@ -116,7 +116,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `pnpm build` tạo `out/sitemap.xml` (5 URL `https://digitalcortexia.com`), `out/robots.txt` có dòng Sitemap, `out/CNAME`
     - _Requirements: 5.3, 5.4_
 
-- [-] 6. Kiểm tra bản build
+- [x] 6. Kiểm tra bản build
   - [x] 6.1 Viết `scripts/check-build.mjs` theo mục "Kiểm tra sau build" của design. Script nhận thư mục qua đối số (mặc định `out`).
     - Unit test `tests/check-build.test.ts` dùng fixture `tests/fixtures/build-bad/` (ảnh không tồn tại, 2 `h1`, chuỗi "dvtechnic", og:url tương đối) và `tests/fixtures/build-good/`: bản lỗi thoát mã 1 và liệt kê từng lỗi, bản đúng thoát mã 0
     - Kiểm chứng: `pnpm test -- check-build` pass
@@ -124,7 +124,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 6.2 Test so khớp nội dung Site cũ `tests/legacy-content.test.ts`: mọi chuỗi trong `legacy-text.json` xuất hiện trong text của `out/<page>.html` tương ứng. Test bỏ qua nếu chưa có `out/`.
     - Kiểm chứng: `pnpm build && pnpm test -- legacy-content` pass
     - _Requirements: 1.2, 1.3_
-  - [ ] 6.3 Chạy `pnpm build && pnpm check` và sửa mọi lỗi tới khi đạt. Phục vụ `out/` bằng `serve` (ghim phiên bản qua `pnpm dlx`), dùng `curl` kiểm tra 5 URL trả 200 và một URL lạ trả trang 404.
+  - [x] 6.3 Chạy `pnpm build && pnpm check` và sửa mọi lỗi tới khi đạt. Phục vụ `out/` bằng `serve` (ghim phiên bản qua `pnpm dlx`), dùng `curl` kiểm tra 5 URL trả 200 và một URL lạ trả trang 404.
     - Kiểm chứng: `pnpm check` thoát mã 0. 5 URL trả 200
     - _Requirements: 1.1, 2.1, 4.1, 4.3, 5.3, 5.4, 7.1, 7.2_
 

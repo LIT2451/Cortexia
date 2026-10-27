@@ -232,3 +232,12 @@
 - Requirements: 2.1, 8.5
 - Commit: `spec(nextjs-migration): 7.1 Xoá mã Site cũ: index.html, about.html…`
 - Ghi chú: Tên cấm trong scripts/tests được ghép từ mảnh (scripts/forbidden-names.mjs); fixture build-bad dùng placeholder, test thay bằng tên thật trong thư mục tạm. extract-legacy thoát 1 kèm thông báo rõ khi thiếu HTML cũ.
+
+## 7.2 Viết lại `README.md`: giới thiệu Cortexia, yêu cầu Node/pnpm, `pnpm install`, `pnpm dev`, `pnpm build`, `pnpm check`, `pnpm test`, cách deploy `out/` lên GitHub Pages (custom domain `digitalcortexia.com`), nơi sửa thông tin thương hiệu (`config/site.ts`) và nội dung mẫu cần xác nhận (`content/digital.ts`). Thêm checklist kiểm tra thủ công: Lighthouse mobile (Performance ≥ 85, Accessibility ≥ 90, SEO ≥ 95), độ rộng 360/768/1280/1920px, bàn phím, reduced motion — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:11
+- File đã đổi: `README.md`, `public/.nojekyll`
+- Kiểm chứng: `pnpm build && pnpm check && test -f out/.nojekyll` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 3.3, 7.3
+- Commit: `spec(nextjs-migration): 7.2 Viết lại README.md: giới thiệu Cortexia…`
+- Ghi chú: Thêm public/.nojekyll để GitHub Pages không bỏ qua thư mục _next/.

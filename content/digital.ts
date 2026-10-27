@@ -150,7 +150,7 @@ export const aiCases: CaseStudy[] = [
       { metric: "85%", label: "Documents processed without manual entry" },
       { metric: "4x", label: "Faster claim turnaround" },
     ],
-    image: { src: "/images/home/ai-document-automation.jpg", alt: "Digital banking application" },
+    image: { src: "/images/home/ai-document-automation.jpg", alt: "Stacks of paper documents and file folders" },
   },
   {
     slug: "llm-support-copilot",
@@ -163,7 +163,7 @@ export const aiCases: CaseStudy[] = [
       { metric: "60%", label: "Conversations resolved by the bot" },
       { metric: "40%", label: "Shorter average handling time" },
     ],
-    image: { src: "/images/home/ai-support-copilot.jpg", alt: "Kubernetes cloud platform dashboard" },
+    image: { src: "/images/home/ai-support-copilot.jpg", alt: "Two support agents wearing headsets in a bright office" },
   },
   {
     slug: "predictive-fleet-maintenance",
@@ -176,7 +176,7 @@ export const aiCases: CaseStudy[] = [
       { metric: "30%", label: "Less unplanned downtime" },
       { metric: "20%", label: "Lower maintenance cost" },
     ],
-    image: { src: "/images/home/ai-fleet-maintenance.jpg", alt: "Commercial fleet IoT telematics dashboard" },
+    image: { src: "/images/home/ai-fleet-maintenance.jpg", alt: "Several semi-trucks parked in a row" },
   },
 ];
 

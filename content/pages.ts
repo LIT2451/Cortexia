@@ -15,7 +15,7 @@ export const serviceList: {
 }[] = [
   {
     slug: "custom-software",
-    image: { src: "/images/services/service-software-eng.jpg", alt: "Custom Software Engineering" },
+    image: { src: "/images/services/service-software-eng.jpg", alt: "Laptop screen displaying colorful code" },
     title: "Custom Software Engineering",
     summary:
       "High-concurrency microservices, cloud-native API backends, and modular enterprise platforms built for massive scale, zero-downtime upgrades, and strict compliance.",
@@ -23,7 +23,7 @@ export const serviceList: {
   },
   {
     slug: "offshore-teams",
-    image: { src: "/images/services/service-odc-teams.jpg", alt: "Dedicated Offshore Teams" },
+    image: { src: "/images/services/service-odc-teams.jpg", alt: "Four people collaborating around a laptop in a modern office" },
     title: "Offshore Dedicated Teams (ODC)",
     summary:
       "Pre-vetted senior software engineers, automated QA squads, and bilingual tech leads embedded directly into your Jira, Slack, and CI/CD pipelines as a seamless extension.",
@@ -31,7 +31,7 @@ export const serviceList: {
   },
   {
     slug: "telecom",
-    image: { src: "/images/services/service-telecom-network.jpg", alt: "Carrier Telecom Solutions" },
+    image: { src: "/images/services/service-telecom-network.jpg", alt: "Network cables connected to server equipment" },
     title: "Telecom & Network Solutions",
     summary:
       "Mission-critical telecommunications architecture: FreeSWITCH & Asterisk PBX clusters, redundant SIP trunking gateways, carrier call detail record analytics, and 24/7 NOC oversight.",
@@ -39,7 +39,7 @@ export const serviceList: {
   },
   {
     slug: "mobile",
-    image: { src: "/images/services/service-mobile-app.jpg", alt: "Mobile App Development" },
+    image: { src: "/images/services/service-mobile-app.jpg", alt: "Smartphone with a colorful app interface beside a laptop keyboard" },
     title: "Mobile Application Engineering",
     summary:
       "Native iOS/Android and Flutter applications engineered with fluid 60fps animations, biometric authentication, secure offline-first local databases, and real-time push engines.",
@@ -47,7 +47,7 @@ export const serviceList: {
   },
   {
     slug: "cloud-devops",
-    image: { src: "/images/services/service-cloud-devops.jpg", alt: "Cloud Infrastructure and DevOps" },
+    image: { src: "/images/services/service-cloud-devops.jpg", alt: "Rows of server racks in a data center" },
     title: "Cloud Infrastructure & DevOps",
     summary:
       "Enterprise Infrastructure-as-Code (Terraform), Kubernetes cluster orchestration, zero-downtime CI/CD workflows, and FinOps cloud spend reduction across AWS, Azure, and GCP.",
@@ -55,7 +55,7 @@ export const serviceList: {
   },
   {
     slug: "maintenance-security",
-    image: { src: "/images/services/service-security-maintenance.jpg", alt: "Security and Maintenance" },
+    image: { src: "/images/services/service-security-maintenance.jpg", alt: "Red padlock on a black computer keyboard" },
     title: "Software Maintenance & Security",
     summary:
       "Tier-2/3 technical operations backed by guaranteed SLAs, rigorous OWASP vulnerability audits, continuous database tuning, security patch deployment, and legacy refactoring.",
@@ -74,7 +74,7 @@ export const home = {
     text: "Cortexia delivers high-performance custom software development, offshore dedicated engineering teams, and robust telecommunications infrastructure with predictable costs and strict IP protection.",
     primary: { label: "Explore Solutions", href: "/services" as const },
     secondary: { label: "Consult an Expert", href: "/contact" as const },
-    image: { src: "/images/home/home-hero.jpg", alt: "Global technology network" },
+    image: { src: "/images/home/home-hero.jpg", alt: "Modern data center with rows of white server cabinets" },
   },
   services: {
     eyebrow: "What We Do",
@@ -83,17 +83,17 @@ export const home = {
       {
         title: "Custom Software Engineering",
         text: "Full-lifecycle enterprise software, modern cloud-native architectures, and robust web applications designed for scale.",
-        image: { src: "/images/home/service-custom-software.jpg", alt: "Enterprise supply chain ERP system" },
+        image: { src: "/images/home/service-custom-software.jpg", alt: "Two engineers writing code at monitors in a bright office" },
       },
       {
         title: "Offshore Dedicated Teams (ODC)",
         text: "Scale your development bandwidth with vetted full-stack engineers, QA specialists, and DevOps talent under transparent agile governance.",
-        image: { src: "/images/home/service-offshore-teams.jpg", alt: "Solutions consultation with a client team" },
+        image: { src: "/images/home/service-offshore-teams.jpg", alt: "Team collaborating around a computer in an office" },
       },
       {
         title: "Telecom & Network Solutions",
         text: "Carrier-grade VoIP platforms, telecommunications routing systems, unified communications, and 24/7 network operations center (NOC) support.",
-        image: { src: "/images/home/service-telecom-platform.jpg", alt: "Carrier-grade telecom platform dashboard" },
+        image: { src: "/images/home/service-telecom-platform.jpg", alt: "Man using an IP phone in an office" },
       },
     ] satisfies (Item & { image: { src: string; alt: string } })[],
   },
@@ -111,7 +111,7 @@ export const home = {
       "Bilingual tech leads and agile governance for distributed teams",
       "Security-first engineering with NDA and IP protection",
     ],
-    image: { src: "/images/home/about-engineering-team.jpg", alt: "Cortexia engineering team" },
+    image: { src: "/images/home/about-engineering-team.jpg", alt: "People sitting at a table with assorted laptop computers" },
     link: { label: "Discover Our Story", href: "/about" as const },
   },
   automation: {

@@ -154,3 +154,12 @@
 - Requirements: 1.1, 1.2, 1.3, 5.1, 8.1, 8.3
 - Commit: `spec(nextjs-migration): 5.1 Viết app/(default)/page.tsx (Trang chủ) và…`
 - Ghi chú: pageMetadata bổ sung openGraph.images (/opengraph-image) vì openGraph của từng trang ghi đè file convention, làm mất og:image (5.1); P4 kiểm thêm og:image. SectionHeading nhận text nhiều đoạn, FeatureGrid cho text tùy chọn (dùng cho tech stack).
+
+## 5.2 Viết `app/(default)/services/page.tsx` và `app/(default)/portfolio/page.tsx` (6 dịch vụ kèm ảnh có `alt`, case study từ `content/digital.ts`) — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:59
+- File đã đổi: `app/(default)/portfolio/page.tsx`, `app/(default)/services/page.tsx`, `components/sections/featured-case.tsx`, `components/sections/service-list.tsx`, `content/pages.ts`
+- Kiểm chứng: `pnpm build && test -f out/services.html && test -f out/portfolio.html` → exit 0 (○  (Static)  prerendered as static content) [spec-done tự chạy lại]
+- Requirements: 1.1, 1.2, 1.3, 5.1, 8.2
+- Commit: `spec(nextjs-migration): 5.2 Viết app/(default)/services/page.tsx và…`
+- Ghi chú: Thêm sections/service-list.tsx (ảnh dịch vụ, alt giữ như Site cũ) và sections/featured-case.tsx (case nổi bật là h2 như Site cũ). Tiêu đề 'Production Systems: OpenClaw & Hermes' đổi thành 'Production Systems: Digital Platforms in Operation' theo 8.2/8.5.

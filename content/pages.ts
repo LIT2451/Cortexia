@@ -6,9 +6,16 @@ export type Cta = { title: string; text: string; label: string; href: "/contact"
 export type Item = { title: string; text: string };
 export type Step = Item & { step: string };
 
-export const serviceList: { slug: string; title: string; summary: string; bullets: string[] }[] = [
+export const serviceList: {
+  slug: string;
+  title: string;
+  summary: string;
+  bullets: string[];
+  image: { src: string; alt: string };
+}[] = [
   {
     slug: "custom-software",
+    image: { src: "/images/services/service-software-eng.jpg", alt: "Custom Software Engineering" },
     title: "Custom Software Engineering",
     summary:
       "High-concurrency microservices, cloud-native API backends, and modular enterprise platforms built for massive scale, zero-downtime upgrades, and strict compliance.",
@@ -16,6 +23,7 @@ export const serviceList: { slug: string; title: string; summary: string; bullet
   },
   {
     slug: "offshore-teams",
+    image: { src: "/images/services/service-odc-teams.jpg", alt: "Dedicated Offshore Teams" },
     title: "Offshore Dedicated Teams (ODC)",
     summary:
       "Pre-vetted senior software engineers, automated QA squads, and bilingual tech leads embedded directly into your Jira, Slack, and CI/CD pipelines as a seamless extension.",
@@ -23,6 +31,7 @@ export const serviceList: { slug: string; title: string; summary: string; bullet
   },
   {
     slug: "telecom",
+    image: { src: "/images/services/service-telecom-network.jpg", alt: "Carrier Telecom Solutions" },
     title: "Telecom & Network Solutions",
     summary:
       "Mission-critical telecommunications architecture: FreeSWITCH & Asterisk PBX clusters, redundant SIP trunking gateways, carrier call detail record analytics, and 24/7 NOC oversight.",
@@ -30,6 +39,7 @@ export const serviceList: { slug: string; title: string; summary: string; bullet
   },
   {
     slug: "mobile",
+    image: { src: "/images/services/service-mobile-app.jpg", alt: "Mobile App Development" },
     title: "Mobile Application Engineering",
     summary:
       "Native iOS/Android and Flutter applications engineered with fluid 60fps animations, biometric authentication, secure offline-first local databases, and real-time push engines.",
@@ -37,6 +47,7 @@ export const serviceList: { slug: string; title: string; summary: string; bullet
   },
   {
     slug: "cloud-devops",
+    image: { src: "/images/services/service-cloud-devops.jpg", alt: "Cloud Infrastructure and DevOps" },
     title: "Cloud Infrastructure & DevOps",
     summary:
       "Enterprise Infrastructure-as-Code (Terraform), Kubernetes cluster orchestration, zero-downtime CI/CD workflows, and FinOps cloud spend reduction across AWS, Azure, and GCP.",
@@ -44,6 +55,7 @@ export const serviceList: { slug: string; title: string; summary: string; bullet
   },
   {
     slug: "maintenance-security",
+    image: { src: "/images/services/service-security-maintenance.jpg", alt: "Security and Maintenance" },
     title: "Software Maintenance & Security",
     summary:
       "Tier-2/3 technical operations backed by guaranteed SLAs, rigorous OWASP vulnerability audits, continuous database tuning, security patch deployment, and legacy refactoring.",
@@ -213,6 +225,12 @@ export const services = {
     eyebrow: "Engineering Excellence",
     title: "Tailored Software & Telecom Services",
     text: "From individual technical modules to full turnkey systems, Cortexia provides end-to-end engineering excellence across the technology spectrum.",
+  },
+  // Replaces the old "Production Systems" block; cases come from content/digital.ts.
+  cases: {
+    eyebrow: "Production Systems",
+    title: "Production Systems: Digital Platforms in Operation",
+    text: "Battle-tested digital platforms and intelligent automation engineered, customized, and maintained by Cortexia for enterprise operations.",
   },
   engagement: {
     eyebrow: "Flexible Partnership",

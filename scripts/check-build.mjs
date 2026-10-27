@@ -177,7 +177,8 @@ export function checkBuild({ out, root }) {
   const cname = join(out, "CNAME");
   if (!existsSync(cname)) err("CNAME", "thiếu file");
   else if (readFileSync(cname, "utf8").trim() !== "digitalcortexia.com") err("CNAME", "nội dung khác digitalcortexia.com");
-  if (!existsSync(join(out, "icon.svg"))) err("icon.svg", "thiếu favicon");
+  if (!existsSync(join(out, "icon.png"))) err("icon.png", "thiếu favicon");
+  if (!existsSync(join(out, "apple-icon.png"))) err("apple-icon.png", "thiếu apple-touch-icon");
 
   return errors;
 }

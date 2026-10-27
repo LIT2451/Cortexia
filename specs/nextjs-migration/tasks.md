@@ -46,7 +46,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `pnpm test -- metadata` pass
     - _Kiểm chứng: Requirements 5.2_
 
-- [-] 3. Header, Footer, logo và layout
+- [x] 3. Header, Footer, logo và layout
   - [x] 3.1 Viết `logo.tsx` (wordmark "Cortexia", link `/`, `aria-label`), `app/icon.svg` (chữ "C" gradient) và `app/opengraph-image.tsx` (1200×630, có `export const dynamic = "force-static"`)
     - Kiểm chứng: `pnpm build` tạo `out/icon.svg` và ảnh OG trong `out/`
     - _Requirements: 2.2_
@@ -64,7 +64,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Unit test `tests/footer.test.tsx`: có địa chỉ, có `Logo`, mọi `href` thuộc 5 URL, không có "Cruip"
     - Kiểm chứng: `pnpm test -- footer` pass
     - _Requirements: 2.2, 2.3, 4.2, NFR 2_
-  - [ ] 3.5 Sửa `app/(default)/layout.tsx`: AOS tắt khi `matchMedia("(prefers-reduced-motion: reduce)")` khớp. Tạo `app/not-found.tsx` theo giao diện Template, có `h1` và link về `/`.
+  - [x] 3.5 Sửa `app/(default)/layout.tsx`: AOS tắt khi `matchMedia("(prefers-reduced-motion: reduce)")` khớp. Tạo `app/not-found.tsx` theo giao diện Template, có `h1` và link về `/`.
     - Unit test `tests/layout.test.tsx`: mock `matchMedia` khớp thì `AOS.init` được gọi với `disable: true`
     - Kiểm chứng: `pnpm test -- layout` pass. `pnpm build` tạo `out/404.html`
     - _Requirements: 4.3, NFR 4_

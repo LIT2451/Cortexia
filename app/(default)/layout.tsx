@@ -13,13 +13,15 @@ export default function DefaultLayout({
   children: React.ReactNode;
 }) {
   useEffect(() => {
+    // Respect the OS "reduce motion" setting by turning animations off entirely.
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     AOS.init({
       once: true,
-      disable: "phone",
+      disable: reduceMotion ? true : "phone",
       duration: 600,
       easing: "ease-out-sine",
     });
-  });
+  }, []);
 
   return (
     <>

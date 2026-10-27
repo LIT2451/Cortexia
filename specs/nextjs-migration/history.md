@@ -94,3 +94,11 @@
 - Kiểm chứng: `pnpm test -- footer` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
 - Requirements: 2.2, 2.3, 4.2
 - Commit: `spec(nextjs-migration): 3.4 Sửa components/ui/footer.tsx: cột Quick…`
+
+## 3.5 Sửa `app/(default)/layout.tsx`: AOS tắt khi `matchMedia("(prefers-reduced-motion: reduce)")` khớp. Tạo `app/not-found.tsx` theo giao diện Template, có `h1` và link về `/` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:49
+- File đã đổi: `app/(default)/layout.tsx`, `app/not-found.tsx`, `tests/layout.test.tsx`
+- Kiểm chứng: `pnpm test -- layout && pnpm build && test -f out/404.html` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 4.3
+- Commit: `spec(nextjs-migration): 3.5 Sửa app/(default)/layout.tsx: AOS tắt khi…`

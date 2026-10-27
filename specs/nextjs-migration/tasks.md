@@ -24,8 +24,8 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `pnpm lint`, `pnpm test` pass. `pnpm build` tạo `out/index.html`
     - _Requirements: 7.1, 7.2, NFR 5_
 
-- [ ] 2. Thông tin thương hiệu và helper
-  - [ ] 2.1 Tạo `config/site.ts` và `lib/contact.ts`
+- [-] 2. Thông tin thương hiệu và helper
+  - [x] 2.1 Tạo `config/site.ts` và `lib/contact.ts`
     - `site` và `navLinks` theo design. `email`, `phone`, `taxId` bằng `""`. Địa chỉ "Tầng 6, tòa C, 22 Thành Công, Ba Đình, Hà Nội".
     - `contactItems(cfg)` bỏ mục rỗng/khoảng trắng, sinh `mailto:` và `tel:`
     - Unit test `tests/site.test.ts`: `email`, `phone`, `taxId` bằng `""`, `navLinks` có đúng 5 URL ở 4.1

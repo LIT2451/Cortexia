@@ -26,3 +26,11 @@
 - Requirements: 7.1, 7.2
 - Commit: `spec(nextjs-migration): 1.3 Cấu hình static export, ghim dependency…`
 - Ghi chú: next 15.1.11 -> 15.5.28 (bản vá mới nhất 15.x); eslint 9.39.5 vì eslint-config-next 15 chưa hỗ trợ eslint 10; thêm vite 8.3.5 và @eslint/eslintrc, @testing-library/dom làm peer
+
+## 2.1 Tạo `config/site.ts` và `lib/contact.ts` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:44
+- File đã đổi: `config/site.ts`, `lib/contact.ts`, `tests/site.test.ts`
+- Kiểm chứng: `pnpm test` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 2.4, 2.5, 2.6, 2.7, 4.2
+- Commit: `spec(nextjs-migration): 2.1 Tạo config/site.ts và lib/contact.ts`

@@ -18,7 +18,7 @@ describe("P4: Metadata tuyệt đối", () => {
         expect(ogUrl.startsWith("https://digitalcortexia.com")).toBe(true);
         expect(ogUrl.endsWith(p)).toBe(true);
         expect(og?.type).toBe("website");
-        expect(og?.images?.[0]?.url).toBe("/opengraph-image");
+        expect(og?.images?.[0]?.url).toBe("/opengraph-image.jpg");
       }),
       { numRuns: 100 },
     );

@@ -1,10 +1,11 @@
+import Image from "next/image";
 import type { CaseStudy } from "@/content/digital";
 import SectionHeading, { type SectionHeadingProps } from "./section-heading";
 import Spotlight from "./spotlight";
 
 export type CaseStudiesProps = SectionHeadingProps & { items: CaseStudy[] };
 
-// Spotlight card from the template's workflows block, without the image.
+// Spotlight card from the template's workflows block; the image is shown only when the case has one.
 const spotlightCard =
   "group/card relative h-full overflow-hidden rounded-2xl bg-gray-800 p-px before:pointer-events-none before:absolute before:-left-40 before:-top-40 before:z-10 before:h-80 before:w-80 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:rounded-full before:bg-indigo-500/80 before:opacity-0 before:blur-3xl before:transition-opacity before:duration-500 after:pointer-events-none after:absolute after:-left-48 after:-top-48 after:z-30 after:h-64 after:w-64 after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:rounded-full after:bg-indigo-500 after:opacity-0 after:blur-3xl after:transition-opacity after:duration-500 hover:after:opacity-20 group-hover:before:opacity-100";
 
@@ -17,8 +18,13 @@ export default function CaseStudies({ eyebrow, title, text, items }: CaseStudies
           <Spotlight className="group mx-auto grid max-w-sm items-start gap-6 lg:max-w-none lg:grid-cols-3">
             {items.map((c) => (
               <article key={c.slug} id={c.slug} className={spotlightCard}>
-                <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-gray-950 p-6 after:absolute after:inset-0 after:bg-linear-to-br after:from-gray-900/50 after:via-gray-800/25 after:to-gray-900/50">
-                  <div className="relative z-10">
+                <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-gray-950 after:absolute after:inset-0 after:bg-linear-to-br after:from-gray-900/50 after:via-gray-800/25 after:to-gray-900/50">
+                  {c.image && (
+                    <div className="relative z-10 aspect-[16/9] overflow-hidden">
+                      <Image className="h-full w-full object-cover" src={c.image.src} alt={c.image.alt} width={640} height={360} />
+                    </div>
+                  )}
+                  <div className="relative z-10 p-6">
                     <p className="mb-3 inline-block rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal">
                       <span className="bg-linear-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
                         {c.industry}

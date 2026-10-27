@@ -9,6 +9,8 @@ export type CaseStudy = {
   summary: string;
   technologies: string[];
   results: { metric: string; label: string }[];
+  /** Optional content image; alt must describe the image. */
+  image?: { src: string; alt: string };
 };
 export type Testimonial = { quote: string; role: string; companyType: string };
 

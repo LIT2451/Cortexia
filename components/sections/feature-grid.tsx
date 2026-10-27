@@ -1,10 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
 import SectionHeading, { type SectionHeadingProps } from "./section-heading";
 import { card, focusRing } from "./styles";
+import type { ContentImage } from "./types";
 
 export type FeatureItem = {
   title: string;
   text?: string;
+  /** Shown 16:9 at the top of the card, replacing the icon. */
+  image?: ContentImage;
   /** Step number such as "01", shown instead of the icon. */
   step?: string;
   badge?: string;
@@ -27,9 +31,14 @@ export default function FeatureGrid({ eyebrow, title, text, items, columns = 3, 
           <SectionHeading eyebrow={eyebrow} title={title} text={text} />
           <div className={`grid gap-6 sm:grid-cols-2 ${cols[columns]}`}>
             {items.map((item) => (
-              <article key={item.title} className={card} data-aos="fade-up">
-                <div className="relative">
-                  {item.step ? (
+              <article key={item.title} className={item.image ? `${card} p-0` : card} data-aos="fade-up">
+                {item.image && (
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-t-2xl">
+                    <Image className="h-full w-full object-cover" src={item.image.src} alt={item.image.alt} width={640} height={360} />
+                  </div>
+                )}
+                <div className={item.image ? "relative p-6" : "relative"}>
+                  {item.image ? null : item.step ? (
                     <p className="mb-3 font-nacelle text-2xl font-semibold text-indigo-500" aria-hidden="true">
                       {item.step}
                     </p>

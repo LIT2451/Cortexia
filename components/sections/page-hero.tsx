@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { btnPrimary, btnSecondary, eyebrowLine, eyebrowText, gradientText } from "./styles";
+import type { ContentImage } from "./types";
 
 export type HeroAction = { label: string; href: string };
 
@@ -10,10 +12,12 @@ export type PageHeroProps = {
   text?: string;
   primary?: HeroAction;
   secondary?: HeroAction;
+  /** Large illustration shown under the text and buttons. */
+  image?: ContentImage;
 };
 
 /** Top of every page: holds the page's only h1. */
-export default function PageHero({ eyebrow, title, text, primary, secondary }: PageHeroProps) {
+export default function PageHero({ eyebrow, title, text, primary, secondary, image }: PageHeroProps) {
   const lines = Array.isArray(title) ? title : [title];
   return (
     <section>
@@ -65,6 +69,18 @@ export default function PageHero({ eyebrow, title, text, primary, secondary }: P
               )}
             </div>
           </div>
+          {image && (
+            <div
+              className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl bg-gray-800 p-px shadow-2xl shadow-indigo-500/10"
+              data-aos="fade-up"
+              data-aos-delay={600}
+            >
+              <div className="relative aspect-[16/9] overflow-hidden rounded-[inherit]">
+                <Image className="h-full w-full object-cover" src={image.src} alt={image.alt} width={1600} height={900} priority />
+                <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-gray-950/60 via-transparent to-transparent" />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

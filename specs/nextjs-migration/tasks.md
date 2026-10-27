@@ -8,7 +8,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Ghi kết quả ra `tests/fixtures/legacy-text.json` dạng `{ "<page>": string[] }`
     - Kiểm chứng: chạy `node scripts/extract-legacy.mjs`. File JSON có đủ 5 khoá, mỗi khoá không rỗng, không chứa "dvtechnic", "OpenClaw", "Hermes", "CDR"
     - _Requirements: 1.2_
-  - [ ] 1.2 Copy mã Template vào gốc repo và bỏ phần không dùng
+  - [x] 1.2 Copy mã Template vào gốc repo và bỏ phần không dùng
     - Copy `app/`, `components/`, `utils/`, `public/`, `next.config.js`, `postcss.config.js`, `tsconfig.json`, `package.json`, `pnpm-lock.yaml` từ `../_template/open-react-template`
     - Xoá `app/(auth)/**`, `app/api/**`, `components/modal-video.tsx`, `public/videos/**`, `public/images/testimonial-*.jpg`, `client-logo-*.svg`, `hero-image-01.jpg`, `features.png`, `workflow-0*.png`, `public/favicon.ico`. Bỏ import tới các file này.
     - Thêm `out/`, `.next/`, `node_modules/` vào `.gitignore`

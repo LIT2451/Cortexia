@@ -8,3 +8,12 @@
 - Requirements: 1.2
 - Commit: `spec(nextjs-migration): 1.1 Trích văn bản Site cũ làm fixture trước…`
 - Ghi chú: Bỏ khối số liệu/case study (Req 8) và thẻ liên hệ cũ của DVTechnic; đổi CDR thành 'call detail record' để đáp ứng 8.5
+
+## 1.2 Copy mã Template vào gốc repo và bỏ phần không dùng — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:40
+- File đã đổi: `.gitignore`, `app/(default)/layout.tsx`, `app/(default)/page.tsx`, `app/css/additional-styles/theme.css`, `app/css/additional-styles/utility-patterns.css`, `app/css/style.css`, `app/layout.tsx`, `components/cta.tsx`, `components/features.tsx`, `components/hero-home.tsx`, `components/page-illustration.tsx`, `components/spotlight.tsx`, `components/testimonials.tsx`, `components/ui/footer.tsx`, `components/ui/header.tsx`, `components/ui/logo.tsx`, `components/workflows.tsx`, `next.config.js`, `package.json`, `pnpm-lock.yaml`, `postcss.config.js`, `public/fonts/nacelle-italic.woff2`, `public/fonts/nacelle-regular.woff2`, `public/fonts/nacelle-semibold.woff2`, `public/fonts/nacelle-semibolditalic.woff2`, `public/images/blurred-shape-gray.svg`, `public/images/blurred-shape.svg`, `public/images/footer-illustration.svg`, `public/images/logo.svg`, `public/images/page-illustration.svg`, `public/images/secondary-illustration.svg`, `tsconfig.json`, `utils/useMasonry.tsx`, `utils/useMousePosition.tsx`
+- Kiểm chứng: `pnpm install --frozen-lockfile && test ! -e "app/(auth)" && test ! -e app/api && test ! -e public/videos && test ! -e components/modal-video.tsx && test ! -e public/favicon.ico && ! ls public/images | grep -qE "testimonial-|client-logo-|hero-image-01|features\.png|workflow-0" && ! grep -rqE "modal-video|testimonial-0|client-logo|hero-image-01|features\.png|workflow-0|/signin|/signup" app components` → exit 0 (Done in 220ms) [spec-done tự chạy lại]
+- Requirements: 1.4, 4.1
+- Commit: `spec(nextjs-migration): 1.2 Copy mã Template vào gốc repo và bỏ phần…`
+- Ghi chú: Gỡ import/route tới file mẫu đã xoá; header tạm thay Sign In/Register bằng nút Contact Us (làm lại ở 3.2)

@@ -1,0 +1,137 @@
+# Kế hoạch triển khai: Site Cortexia trên Next.js theo template Cruip
+
+Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
+
+- [-] 1. Dựng khung dự án từ Template
+  - [x] 1.1 Trích văn bản Site cũ làm fixture trước khi thay đổi
+    - Viết `scripts/extract-legacy.mjs` (Node built-in): đọc 5 file HTML cũ, lấy text của h1–h3, đoạn văn `<p>` trong phần nội dung (bỏ header/footer), danh sách dịch vụ và tiêu đề CTA. Thay "DVTechnic" bằng "Cortexia", bỏ phần thuộc Requirement 8 (số liệu, case study, lời chứng thực).
+    - Ghi kết quả ra `tests/fixtures/legacy-text.json` dạng `{ "<page>": string[] }`
+    - Kiểm chứng: chạy `node scripts/extract-legacy.mjs`. File JSON có đủ 5 khoá, mỗi khoá không rỗng, không chứa "dvtechnic", "OpenClaw", "Hermes", "CDR"
+    - _Requirements: 1.2_
+  - [ ] 1.2 Copy mã Template vào gốc repo và bỏ phần không dùng
+    - Copy `app/`, `components/`, `utils/`, `public/`, `next.config.js`, `postcss.config.js`, `tsconfig.json`, `package.json`, `pnpm-lock.yaml` từ `../_template/open-react-template`
+    - Xoá `app/(auth)/**`, `app/api/**`, `components/modal-video.tsx`, `public/videos/**`, `public/images/testimonial-*.jpg`, `client-logo-*.svg`, `hero-image-01.jpg`, `features.png`, `workflow-0*.png`, `public/favicon.ico`. Bỏ import tới các file này.
+    - Thêm `out/`, `.next/`, `node_modules/` vào `.gitignore`
+    - Kiểm chứng: `pnpm install` thành công. Trong `app/`, `components/`, `public/` không còn file nào trong danh sách xoá
+    - _Requirements: 1.4, 4.1_
+  - [ ] 1.3 Cấu hình static export, ghim dependency, thêm ESLint và bộ test
+    - `next.config.js`: `output: 'export'`, `images: { unoptimized: true }`
+    - `package.json`: đổi name thành `cortexia`. Ghim chính xác mọi phiên bản theo `pnpm-lock.yaml`. Nâng `next` lên bản vá mới nhất của nhánh 15.x sau khi tra advisory.
+    - Thêm devDependencies ghim chính xác: `eslint`, `eslint-config-next`, `vitest`, `@vitejs/plugin-react`, `jsdom`, `@testing-library/react`, `@testing-library/user-event`, `fast-check`
+    - Tạo `eslint.config.mjs` và `vitest.config.mts` (môi trường jsdom, alias `@/`)
+    - Scripts: `dev`, `build`, `lint`, `test` (`vitest run`), `check` (`node scripts/check-build.mjs`)
+    - Viết `tests/setup.test.ts` có một test kiểm tra `package.json` không có phiên bản bắt đầu bằng `^` hoặc `~`
+    - Kiểm chứng: `pnpm lint`, `pnpm test` pass. `pnpm build` tạo `out/index.html`
+    - _Requirements: 7.1, 7.2, NFR 5_
+
+- [ ] 2. Thông tin thương hiệu và helper
+  - [ ] 2.1 Tạo `config/site.ts` và `lib/contact.ts`
+    - `site` và `navLinks` theo design. `email`, `phone`, `taxId` bằng `""`. Địa chỉ "Tầng 6, tòa C, 22 Thành Công, Ba Đình, Hà Nội".
+    - `contactItems(cfg)` bỏ mục rỗng/khoảng trắng, sinh `mailto:` và `tel:`
+    - Unit test `tests/site.test.ts`: `email`, `phone`, `taxId` bằng `""`, `navLinks` có đúng 5 URL ở 4.1
+    - Kiểm chứng: `pnpm test` pass
+    - _Requirements: 2.4, 2.5, 2.6, 2.7, 4.2_
+  - [ ] 2.2 Property P1: Hiển thị mục liên hệ theo cấu hình
+    - *Với mọi* `SiteConfig` sinh ngẫu nhiên, trong đó `email`, `phone`, `taxId` lấy từ `""`, chuỗi chỉ có khoảng trắng hoặc chuỗi hợp lệ, `contactItems(cfg)` chứa mục loại k khi và chỉ khi `cfg[k].trim() !== ""`. Mục email luôn có `href === "mailto:" + email`, mục phone luôn có `href` bắt đầu bằng `tel:` và chỉ gồm chữ số và `+`. Render `ContactList` với cấu hình đó không chứa nhãn hay biểu tượng của mục bị bỏ.
+    - Viết bằng fast-check trong `tests/properties/contact-items.property.test.tsx`, `numRuns: 100`. Phần render cần `components/ui/contact-list.tsx` (tạo trong task này, nhận `cfg` qua props, mặc định là `site`)
+    - Kiểm chứng: `pnpm test -- contact-items` pass
+    - _Kiểm chứng: Requirements 2.5, 2.6_
+  - [ ] 2.3 Tạo `lib/metadata.ts` với `pageMetadata()` và đặt `metadataBase` trong `app/layout.tsx`
+    - Root layout: `lang="en"`, metadata mặc định của Cortexia, bỏ "Create Next App"
+    - Kiểm chứng: `pnpm test` và `pnpm build` pass
+    - _Requirements: 5.1, 5.2, 5.5_
+  - [ ] 2.4 Property P4: Metadata tuyệt đối
+    - *Với mọi* path bắt đầu bằng `/` cùng title/description bất kỳ, `pageMetadata()` trả `canonical` và `openGraph.url` bắt đầu bằng `https://digitalcortexia.com` và kết thúc bằng path, `openGraph.type === "website"`.
+    - Viết bằng fast-check trong `tests/properties/metadata.property.test.ts`, `numRuns: 100`
+    - Kiểm chứng: `pnpm test -- metadata` pass
+    - _Kiểm chứng: Requirements 5.2_
+
+- [ ] 3. Header, Footer, logo và layout
+  - [ ] 3.1 Viết `logo.tsx` (wordmark "Cortexia", link `/`, `aria-label`), `app/icon.svg` (chữ "C" gradient) và `app/opengraph-image.tsx` (1200×630, có `export const dynamic = "force-static"`)
+    - Kiểm chứng: `pnpm build` tạo `out/icon.svg` và ảnh OG trong `out/`
+    - _Requirements: 2.2_
+  - [ ] 3.2 Sửa `components/ui/header.tsx`: menu 5 liên kết, nút "Contact Us", menu di động dưới `md`, `isActive` + `aria-current="page"`, viền focus nhìn thấy được
+    - `isActive` đặt ở `lib/nav.ts` để test riêng
+    - Unit test `tests/header.test.tsx` (mock `usePathname`): bấm nút menu đổi `aria-expanded` thành `true` và hiện đủ 5 link. Escape đóng menu. Có render `Logo`.
+    - Kiểm chứng: `pnpm test -- header` pass
+    - _Requirements: 2.2, 3.4, 3.5, 4.2, NFR 3_
+  - [ ] 3.3 Property P3: Đúng một liên kết đang hoạt động
+    - *Với mọi* pathname thuộc 5 URL (có thể thêm `/` cuối), có đúng một phần tử `l` của `navLinks` với `isActive(pathname, l.href) === true`, và đó là trang tương ứng. *Với mọi* pathname ngẫu nhiên khác 5 URL đó, không có liên kết nào active.
+    - Viết bằng fast-check trong `tests/properties/nav.property.test.ts`, `numRuns: 100`
+    - Kiểm chứng: `pnpm test -- nav` pass
+    - _Kiểm chứng: Requirements 3.5_
+  - [ ] 3.4 Sửa `components/ui/footer.tsx`: cột Quick Links, Services, Contact Us (`ContactList`), logo, `© <năm> Cortexia`. Bỏ link mẫu và icon mạng xã hội. Ảnh minh hoạ có `alt=""`.
+    - Unit test `tests/footer.test.tsx`: có địa chỉ, có `Logo`, mọi `href` thuộc 5 URL, không có "Cruip"
+    - Kiểm chứng: `pnpm test -- footer` pass
+    - _Requirements: 2.2, 2.3, 4.2, NFR 2_
+  - [ ] 3.5 Sửa `app/(default)/layout.tsx`: AOS tắt khi `matchMedia("(prefers-reduced-motion: reduce)")` khớp. Tạo `app/not-found.tsx` theo giao diện Template, có `h1` và link về `/`.
+    - Unit test `tests/layout.test.tsx`: mock `matchMedia` khớp thì `AOS.init` được gọi với `disable: true`
+    - Kiểm chứng: `pnpm test -- layout` pass. `pnpm build` tạo `out/404.html`
+    - _Requirements: 4.3, NFR 4_
+
+- [ ] 4. Nội dung và khối giao diện
+  - [ ] 4.1 Tạo `content/pages.ts` với văn bản giữ nguyên của Site cũ (tiêu đề, đoạn văn, 6 dịch vụ, quy trình, CTA, meta của 5 trang), tên thương hiệu đổi thành Cortexia
+    - Lấy văn bản từ `tests/fixtures/legacy-text.json` và các file HTML cũ
+    - Kiểm chứng: `pnpm lint` pass. Trong `content/pages.ts` không có "dvtechnic" (không phân biệt hoa thường)
+    - _Requirements: 1.2, 2.1, 5.1_
+  - [ ] 4.2 Tạo `content/digital.ts`: ghi chú "NỘI DUNG MẪU" ở đầu file, 4 `stats`, `featuredCase`, 6 `portfolioCases`, 2 `serviceCases`, `testimonials` (chỉ chức danh và loại hình doanh nghiệp) thuộc ngành Digital
+    - Unit test `tests/digital.test.ts`: dòng đầu chứa "NỘI DUNG MẪU". `stats.length === 4` và không chứa "10+", "150+", "50+". Số lời chứng thực bằng Site cũ. Object `Testimonial` chỉ có các khoá `quote`, `role`, `companyType`.
+    - Kiểm chứng: `pnpm test -- digital` pass
+    - _Requirements: 8.1, 8.3, 8.4, 8.5_
+  - [ ] 4.3 Property P5: Case study đủ trường
+    - *Với mọi* case study trong `featuredCase`, `portfolioCases`, `serviceCases`, các trường `name`, `industry`, `summary` khác rỗng, `technologies.length >= 1`, `results.length >= 1`, mỗi `metric` chứa ít nhất một chữ số. Đồng thời `portfolioCases.length === 6`, `serviceCases.length === 2`.
+    - Viết bằng fast-check trong `tests/properties/case-studies.property.test.ts` (dùng `fc.constantFrom` trên tập case study), `numRuns: 100`
+    - Kiểm chứng: `pnpm test -- case-studies` pass
+    - _Kiểm chứng: Requirements 8.2_
+  - [ ] 4.4 Dựng `components/sections/`: `page-hero.tsx` (chứa `h1` duy nhất), `stats.tsx`, `feature-grid.tsx`, `case-studies.tsx`, `testimonials.tsx`, `cta.tsx` (tiêu đề + nút tới `/contact`). Chuyển `page-illustration.tsx`, `spotlight.tsx` vào đây. Xoá `hero-home.tsx`, `features.tsx`, `workflows.tsx`, `testimonials.tsx`, `cta.tsx` cũ ở `components/`.
+    - Mọi component nhận dữ liệu qua props, ảnh trang trí có `alt=""`, phần tử tương tác có `focus-visible`
+    - Unit test `tests/sections.test.tsx`: `PageHero` render đúng 1 `h1`, `Cta` có link `/contact`, `Testimonials` không render `<img>`
+    - Kiểm chứng: `pnpm test -- sections` và `pnpm lint` pass
+    - _Requirements: 1.3, 3.1, 3.2, 5.5, NFR 2, NFR 3_
+  - [ ] 4.5 Copy 6 ảnh `images/services/service-*.jpg` sang `public/images/services/`
+    - Kiểm chứng: có đủ 6 file trong `public/images/services/`
+    - _Requirements: 1.2_
+
+- [ ] 5. Các trang
+  - [ ] 5.1 Viết `app/(default)/page.tsx` (Trang chủ) và `app/(default)/about/page.tsx` theo bảng Trang trong design, có `metadata` từ `pageMetadata`
+    - Kiểm chứng: `pnpm build` tạo `out/index.html`, `out/about.html`
+    - _Requirements: 1.1, 1.2, 1.3, 5.1, 8.1, 8.3_
+  - [ ] 5.2 Viết `app/(default)/services/page.tsx` và `app/(default)/portfolio/page.tsx` (6 dịch vụ kèm ảnh có `alt`, case study từ `content/digital.ts`)
+    - Kiểm chứng: `pnpm build` tạo `out/services.html`, `out/portfolio.html`
+    - _Requirements: 1.1, 1.2, 1.3, 5.1, 8.2, NFR 2_
+  - [ ] 5.3 Viết `lib/validate-contact.ts` (`validateContact`, `EMAIL_RE`, `FIELD_ORDER`, hàm `firstInvalidField`)
+    - Kiểm chứng: `pnpm test` pass
+    - _Requirements: 6.3_
+  - [ ] 5.4 Property P2: Validation form liên hệ
+    - *Với mọi* `ContactInput` sinh ngẫu nhiên (chuỗi rỗng, khoảng trắng, unicode, email hợp lệ/không hợp lệ), `validateContact(x)` có khoá `name` khi và chỉ khi `x.name.trim() === ""`, có khoá `message` khi và chỉ khi `x.message.trim() === ""`, có khoá `email` khi và chỉ khi email rỗng hoặc không khớp `EMAIL_RE`. `phone` và `service` không bao giờ gây lỗi. Ô được focus là phần tử đầu tiên của `FIELD_ORDER` có trong kết quả.
+    - Viết bằng fast-check trong `tests/properties/validate-contact.property.test.ts`, `numRuns: 100`. Phần focus kiểm qua `firstInvalidField`.
+    - Kiểm chứng: `pnpm test -- validate-contact` pass
+    - _Kiểm chứng: Requirements 6.3_
+  - [ ] 5.5 Viết `components/contact-form.tsx` và `app/(default)/contact/page.tsx` (hero, `ContactList`, form, các bước tiếp nhận, CTA)
+    - Unit test `tests/contact-form.test.tsx`: có 5 trường, mỗi ô có label gắn đúng (`getByLabelText`). Gửi rỗng thì có lỗi cạnh ô, `aria-invalid`, focus vào Name. Gửi hợp lệ thì hiện câu cảm ơn ở 6.2, các ô rỗng, `window.alert` không được gọi.
+    - Unit test `tests/contact-page.test.tsx`: trang có các bước tiếp nhận và địa chỉ
+    - Kiểm chứng: `pnpm test -- contact` pass. `pnpm build` tạo `out/contact.html`
+    - _Requirements: 1.1, 1.3, 2.3, 6.1, 6.2, 6.3, 6.4, NFR 3_
+  - [ ] 5.6 Tạo `app/sitemap.ts`, `app/robots.ts` (`force-static`) và `public/CNAME`
+    - Kiểm chứng: `pnpm build` tạo `out/sitemap.xml` (5 URL `https://digitalcortexia.com`), `out/robots.txt` có dòng Sitemap, `out/CNAME`
+    - _Requirements: 5.3, 5.4_
+
+- [ ] 6. Kiểm tra bản build
+  - [ ] 6.1 Viết `scripts/check-build.mjs` theo mục "Kiểm tra sau build" của design. Script nhận thư mục qua đối số (mặc định `out`).
+    - Unit test `tests/check-build.test.ts` dùng fixture `tests/fixtures/build-bad/` (ảnh không tồn tại, 2 `h1`, chuỗi "dvtechnic", og:url tương đối) và `tests/fixtures/build-good/`: bản lỗi thoát mã 1 và liệt kê từng lỗi, bản đúng thoát mã 0
+    - Kiểm chứng: `pnpm test -- check-build` pass
+    - _Requirements: 1.4, 2.1, 4.2, 5.1, 5.2, 5.5, 7.4, 8.5, NFR 2_
+  - [ ] 6.2 Test so khớp nội dung Site cũ `tests/legacy-content.test.ts`: mọi chuỗi trong `legacy-text.json` xuất hiện trong text của `out/<page>.html` tương ứng. Test bỏ qua nếu chưa có `out/`.
+    - Kiểm chứng: `pnpm build && pnpm test -- legacy-content` pass
+    - _Requirements: 1.2, 1.3_
+  - [ ] 6.3 Chạy `pnpm build && pnpm check` và sửa mọi lỗi tới khi đạt. Phục vụ `out/` bằng `serve` (ghim phiên bản qua `pnpm dlx`), dùng `curl` kiểm tra 5 URL trả 200 và một URL lạ trả trang 404.
+    - Kiểm chứng: `pnpm check` thoát mã 0. 5 URL trả 200
+    - _Requirements: 1.1, 2.1, 4.1, 4.3, 5.3, 5.4, 7.1, 7.2_
+
+- [ ] 7. Hoàn tất
+  - [ ] 7.1 Xoá mã Site cũ: `index.html`, `about.html`, `services.html`, `portfolio.html`, `contact.html`, `css/`, `js/`, `images/`, `fonts/`, `CNAME`, `robots.txt`, `sitemap.xml` ở gốc. Giữ `scripts/extract-legacy.mjs` nhưng cho nó báo lỗi rõ ràng khi không còn file HTML cũ.
+    - Kiểm chứng: `pnpm build && pnpm check && pnpm test` pass. Tìm "dvtechnic" trong repo (trừ `specs/`, `.git/`) ra 0 kết quả
+    - _Requirements: 2.1, 8.5_
+  - [ ] 7.2 Viết lại `README.md`: giới thiệu Cortexia, yêu cầu Node/pnpm, `pnpm install`, `pnpm dev`, `pnpm build`, `pnpm check`, `pnpm test`, cách deploy `out/` lên GitHub Pages (custom domain `digitalcortexia.com`), nơi sửa thông tin thương hiệu (`config/site.ts`) và nội dung mẫu cần xác nhận (`content/digital.ts`). Thêm checklist kiểm tra thủ công: Lighthouse mobile (Performance ≥ 85, Accessibility ≥ 90, SEO ≥ 95), độ rộng 360/768/1280/1920px, bàn phím, reduced motion.
+    - Kiểm chứng: `pnpm check` vẫn đạt (README không chứa chuỗi cấm)
+    - _Requirements: 3.3, 7.3, NFR 1_

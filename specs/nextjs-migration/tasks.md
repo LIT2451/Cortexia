@@ -78,7 +78,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Unit test `tests/digital.test.ts`: dòng đầu chứa "NỘI DUNG MẪU". `stats.length === 4` và không chứa "10+", "150+", "50+". Số lời chứng thực bằng Site cũ. Object `Testimonial` chỉ có các khoá `quote`, `role`, `companyType`.
     - Kiểm chứng: `pnpm test -- digital` pass
     - _Requirements: 8.1, 8.3, 8.4, 8.5_
-  - [ ] 4.3 Property P5: Case study đủ trường
+  - [x] 4.3 Property P5: Case study đủ trường
     - *Với mọi* case study trong `featuredCase`, `portfolioCases`, `serviceCases`, các trường `name`, `industry`, `summary` khác rỗng, `technologies.length >= 1`, `results.length >= 1`, mỗi `metric` chứa ít nhất một chữ số. Đồng thời `portfolioCases.length === 6`, `serviceCases.length === 2`.
     - Viết bằng fast-check trong `tests/properties/case-studies.property.test.ts` (dùng `fc.constantFrom` trên tập case study), `numRuns: 100`
     - Kiểm chứng: `pnpm test -- case-studies` pass

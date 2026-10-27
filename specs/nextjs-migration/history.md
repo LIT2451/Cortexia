@@ -119,3 +119,12 @@
 - Requirements: 8.1, 8.3, 8.4, 8.5
 - Commit: `spec(nextjs-migration): 4.2 Tạo content/digital.ts: ghi chú "NỘI DUNG…`
 - Ghi chú: Site cũ không có khối lời chứng thực (0 mục), nên 'số lời chứng thực bằng Site cũ' không áp dụng được nguyên văn; giữ 3 mục mẫu cho khối Testimonials ở Home/About theo design, test khoá đúng 3 mục
+
+## 4.3 Property P5: Case study đủ trường — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:52
+- File đã đổi: `tests/properties/case-studies.property.test.ts`
+- Kiểm chứng: `pnpm test -- case-studies` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 8.2
+- Property: P5 pass (100 lần)
+- Commit: `spec(nextjs-migration): 4.3 Property P5: Case study đủ trường`

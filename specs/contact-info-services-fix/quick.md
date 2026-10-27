@@ -31,6 +31,6 @@
 - [x] 1 Thêm email, số điện thoại mẫu vào `config/site.ts` và cập nhật test
   - Kiểm chứng: `pnpm test` đạt và `out/contact.html` có `mailto:contact@digitalcortexia.com`, `tel:+842432006688` sau `pnpm build`
   - _Requirements: 1.1, 1.3_
-- [ ] 2 Sửa padding thẻ có ảnh trong `ServiceList`, `FeatureGrid` và thêm test
+- [x] 2 Sửa padding thẻ có ảnh trong `ServiceList`, `FeatureGrid` và thêm test
   - Kiểm chứng: `pnpm build && pnpm check && pnpm lint && pnpm test` đạt
   - _Requirements: 1.2, 1.3_

@@ -5,6 +5,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import PageHero from "@/components/sections/page-hero";
 import FeatureGrid from "@/components/sections/feature-grid";
 import CaseStudies from "@/components/sections/case-studies";
+import ServiceList from "@/components/sections/service-list";
 import ImageSplit from "@/components/sections/image-split";
 import Cta from "@/components/sections/cta";
 import Testimonials from "@/components/sections/testimonials";
@@ -62,6 +63,23 @@ describe("components/sections", () => {
     const [withImg, withoutImg] = Array.from(container.querySelectorAll("article"));
     expect(withImg.querySelector("img")?.getAttribute("alt")).toBe("Engineers writing code");
     expect(withoutImg.querySelector("img")).toBeNull();
+    // Card with image has no padding so the image is flush; card without image keeps p-6.
+    expect(withImg.classList.contains("p-6")).toBe(false);
+    expect(withImg.classList.contains("p-0")).toBe(false);
+    expect(withImg.querySelector("img")!.closest("article > div")).toBe(withImg.firstElementChild);
+    expect(withoutImg.classList.contains("p-6")).toBe(true);
+  });
+
+  it("ServiceList: thẻ có ảnh không có padding, nội dung có p-6 riêng", () => {
+    const { container } = render(<ServiceList title="Services" items={serviceList} />);
+    const cards = Array.from(container.querySelectorAll("article"));
+    expect(cards).toHaveLength(serviceList.length);
+    for (const c of cards) {
+      expect(c.classList.contains("p-6"), c.id).toBe(false);
+      expect(c.classList.contains("p-0"), c.id).toBe(false);
+      expect(c.firstElementChild?.querySelector("img")).not.toBeNull();
+      expect(c.lastElementChild?.classList.contains("p-6")).toBe(true);
+    }
   });
 
   it("CaseStudies hiển thị ảnh của case nếu có", () => {

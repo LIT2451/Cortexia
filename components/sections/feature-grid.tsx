@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import SectionHeading, { type SectionHeadingProps } from "./section-heading";
-import { card, focusRing } from "./styles";
+import { card, cardBase, focusRing } from "./styles";
 import type { ContentImage } from "./types";
 
 export type FeatureItem = {
@@ -31,7 +31,7 @@ export default function FeatureGrid({ eyebrow, title, text, items, columns = 3, 
           <SectionHeading eyebrow={eyebrow} title={title} text={text} />
           <div className={`grid gap-6 sm:grid-cols-2 ${cols[columns]}`}>
             {items.map((item) => (
-              <article key={item.title} className={item.image ? `${card} p-0` : card} data-aos="fade-up">
+              <article key={item.title} className={item.image ? cardBase : card} data-aos="fade-up">
                 {item.image && (
                   <div className="relative aspect-[16/9] overflow-hidden rounded-t-2xl">
                     <Image className="h-full w-full object-cover" src={item.image.src} alt={item.image.alt} width={640} height={360} />

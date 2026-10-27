@@ -1,6 +1,6 @@
 import Image from "next/image";
 import SectionHeading, { type SectionHeadingProps } from "./section-heading";
-import { card } from "./styles";
+import { cardBase } from "./styles";
 
 export type ServiceItem = {
   slug: string;
@@ -19,7 +19,7 @@ export default function ServiceList({ eyebrow, title, text, items }: SectionHead
           <SectionHeading eyebrow={eyebrow} title={title} text={text} />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((s) => (
-              <article key={s.slug} id={s.slug} className={`${card} p-0`} data-aos="fade-up">
+              <article key={s.slug} id={s.slug} className={cardBase} data-aos="fade-up">
                 <div className="relative aspect-[16/9] overflow-hidden rounded-t-2xl">
                   <Image className="h-full w-full object-cover" src={s.image.src} alt={s.image.alt} width={640} height={360} />
                 </div>

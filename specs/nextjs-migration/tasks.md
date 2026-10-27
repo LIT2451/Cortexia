@@ -2,7 +2,7 @@
 
 Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
 
-- [-] 1. Dựng khung dự án từ Template
+- [x] 1. Dựng khung dự án từ Template
   - [x] 1.1 Trích văn bản Site cũ làm fixture trước khi thay đổi
     - Viết `scripts/extract-legacy.mjs` (Node built-in): đọc 5 file HTML cũ, lấy text của h1–h3, đoạn văn `<p>` trong phần nội dung (bỏ header/footer), danh sách dịch vụ và tiêu đề CTA. Thay "DVTechnic" bằng "Cortexia", bỏ phần thuộc Requirement 8 (số liệu, case study, lời chứng thực).
     - Ghi kết quả ra `tests/fixtures/legacy-text.json` dạng `{ "<page>": string[] }`
@@ -14,7 +14,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Thêm `out/`, `.next/`, `node_modules/` vào `.gitignore`
     - Kiểm chứng: `pnpm install` thành công. Trong `app/`, `components/`, `public/` không còn file nào trong danh sách xoá
     - _Requirements: 1.4, 4.1_
-  - [ ] 1.3 Cấu hình static export, ghim dependency, thêm ESLint và bộ test
+  - [x] 1.3 Cấu hình static export, ghim dependency, thêm ESLint và bộ test
     - `next.config.js`: `output: 'export'`, `images: { unoptimized: true }`
     - `package.json`: đổi name thành `cortexia`. Ghim chính xác mọi phiên bản theo `pnpm-lock.yaml`. Nâng `next` lên bản vá mới nhất của nhánh 15.x sau khi tra advisory.
     - Thêm devDependencies ghim chính xác: `eslint`, `eslint-config-next`, `vitest`, `@vitejs/plugin-react`, `jsdom`, `@testing-library/react`, `@testing-library/user-event`, `fast-check`

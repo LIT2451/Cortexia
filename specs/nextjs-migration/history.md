@@ -17,3 +17,12 @@
 - Requirements: 1.4, 4.1
 - Commit: `spec(nextjs-migration): 1.2 Copy mã Template vào gốc repo và bỏ phần…`
 - Ghi chú: Gỡ import/route tới file mẫu đã xoá; header tạm thay Sign In/Register bằng nút Contact Us (làm lại ở 3.2)
+
+## 1.3 Cấu hình static export, ghim dependency, thêm ESLint và bộ test — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:42
+- File đã đổi: `components/testimonials.tsx`, `components/workflows.tsx`, `eslint.config.mjs`, `next.config.js`, `package.json`, `pnpm-lock.yaml`, `tests/setup.test.ts`, `vitest.config.mts`
+- Kiểm chứng: `pnpm lint && pnpm test && pnpm build && test -f out/index.html` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 7.1, 7.2
+- Commit: `spec(nextjs-migration): 1.3 Cấu hình static export, ghim dependency…`
+- Ghi chú: next 15.1.11 -> 15.5.28 (bản vá mới nhất 15.x); eslint 9.39.5 vì eslint-config-next 15 chưa hỗ trợ eslint 10; thêm vite 8.3.5 và @eslint/eslintrc, @testing-library/dom làm peer

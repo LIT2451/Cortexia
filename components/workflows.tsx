@@ -57,7 +57,7 @@ export default function Workflows() {
                   </div>
                   <p className="text-indigo-200/65">
                     Streamline the product development flow with a content
-                    platform that's aligned across specs and insights.
+                    platform that&apos;s aligned across specs and insights.
                   </p>
                 </div>
               </div>
@@ -96,7 +96,7 @@ export default function Workflows() {
                   </div>
                   <p className="text-indigo-200/65">
                     Streamline the product development flow with a content
-                    platform that's aligned across specs and insights.
+                    platform that&apos;s aligned across specs and insights.
                   </p>
                 </div>
               </div>
@@ -135,7 +135,7 @@ export default function Workflows() {
                   </div>
                   <p className="text-indigo-200/65">
                     Streamline the product development flow with a content
-                    platform that's aligned across specs and insights.
+                    platform that&apos;s aligned across specs and insights.
                   </p>
                 </div>
               </div>

@@ -69,3 +69,11 @@
 - Requirements: 2.2
 - Commit: `spec(nextjs-migration): 3.1 Viết logo.tsx (wordmark "Cortexia", link…`
 - Ghi chú: Xoá public/images/logo.svg của Template (không còn dùng). File OG xuất ra không có đuôi, kiểm tra MIME ở 6.3
+
+## 3.2 Sửa `components/ui/header.tsx`: menu 5 liên kết, nút "Contact Us", menu di động dưới `md`, `isActive` + `aria-current="page"`, viền focus nhìn thấy được — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:47
+- File đã đổi: `components/ui/header.tsx`, `lib/nav.ts`, `tests/header.test.tsx`
+- Kiểm chứng: `pnpm test -- header` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 2.2, 3.4, 3.5, 4.2
+- Commit: `spec(nextjs-migration): 3.2 Sửa components/ui/header.tsx: menu 5 liên…`

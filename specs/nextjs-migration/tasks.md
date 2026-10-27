@@ -102,7 +102,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
   - [x] 5.3 Viết `lib/validate-contact.ts` (`validateContact`, `EMAIL_RE`, `FIELD_ORDER`, hàm `firstInvalidField`)
     - Kiểm chứng: `pnpm test` pass
     - _Requirements: 6.3_
-  - [ ] 5.4 Property P2: Validation form liên hệ
+  - [x] 5.4 Property P2: Validation form liên hệ
     - *Với mọi* `ContactInput` sinh ngẫu nhiên (chuỗi rỗng, khoảng trắng, unicode, email hợp lệ/không hợp lệ), `validateContact(x)` có khoá `name` khi và chỉ khi `x.name.trim() === ""`, có khoá `message` khi và chỉ khi `x.message.trim() === ""`, có khoá `email` khi và chỉ khi email rỗng hoặc không khớp `EMAIL_RE`. `phone` và `service` không bao giờ gây lỗi. Ô được focus là phần tử đầu tiên của `FIELD_ORDER` có trong kết quả.
     - Viết bằng fast-check trong `tests/properties/validate-contact.property.test.ts`, `numRuns: 100`. Phần focus kiểm qua `firstInvalidField`.
     - Kiểm chứng: `pnpm test -- validate-contact` pass

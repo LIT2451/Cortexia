@@ -171,3 +171,12 @@
 - Kiểm chứng: `pnpm test` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
 - Requirements: 6.3
 - Commit: `spec(nextjs-migration): 5.3 Viết lib/validate-contact.ts…`
+
+## 5.4 Property P2: Validation form liên hệ — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:00
+- File đã đổi: `tests/properties/validate-contact.property.test.ts`
+- Kiểm chứng: `pnpm test -- validate-contact` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 6.3
+- Property: P2 pass (100 lần)
+- Commit: `spec(nextjs-migration): 5.4 Property P2: Validation form liên hệ`

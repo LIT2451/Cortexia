@@ -74,6 +74,7 @@ export const home = {
     text: "Cortexia delivers high-performance custom software development, offshore dedicated engineering teams, and robust telecommunications infrastructure with predictable costs and strict IP protection.",
     primary: { label: "Explore Solutions", href: "/services" as const },
     secondary: { label: "Consult an Expert", href: "/contact" as const },
+    image: { src: "/images/home/home-hero.jpg", alt: "Global technology network connecting cloud and telecom systems" },
   },
   services: {
     eyebrow: "What We Do",
@@ -82,16 +83,41 @@ export const home = {
       {
         title: "Custom Software Engineering",
         text: "Full-lifecycle enterprise software, modern cloud-native architectures, and robust web applications designed for scale.",
+        image: { src: "/images/home/service-software.jpg", alt: "Software engineers building an enterprise application" },
       },
       {
         title: "Offshore Dedicated Teams (ODC)",
         text: "Scale your development bandwidth with vetted full-stack engineers, QA specialists, and DevOps talent under transparent agile governance.",
+        image: { src: "/images/home/service-teams.jpg", alt: "Dedicated offshore engineering team collaborating" },
       },
       {
         title: "Telecom & Network Solutions",
         text: "Carrier-grade VoIP platforms, telecommunications routing systems, unified communications, and 24/7 network operations center (NOC) support.",
+        image: { src: "/images/home/service-telecom.jpg", alt: "Telecom network infrastructure" },
       },
-    ] satisfies Item[],
+    ] satisfies (Item & { image: { src: string; alt: string } })[],
+  },
+  // New copy (not from the previous site): company introduction and Automation & AI block.
+  about: {
+    eyebrow: "About Cortexia",
+    title: "Your Engineering Partner for Software, Automation & AI",
+    text: [
+      "Cortexia is a software engineering company that helps enterprises design, build and run digital products. Our teams combine solid software craftsmanship with hands-on experience in cloud, telecom and applied AI.",
+      "From the first workshop to production support, we work as an extension of your team: clear scope, transparent sprints and engineers who take ownership of results.",
+    ],
+    points: [
+      "Full-cycle delivery: discovery, design, development, QA and DevOps",
+      "Applied AI and automation built into real business workflows",
+      "Bilingual tech leads and agile governance for distributed teams",
+      "Security-first engineering with NDA and IP protection",
+    ],
+    image: { src: "/images/home/company-team.jpg", alt: "Cortexia engineering team working together" },
+    link: { label: "Discover Our Story", href: "/about" as const },
+  },
+  automation: {
+    eyebrow: "Automation & AI",
+    title: "Automation & AI Projects in Production",
+    text: "We turn repetitive work into automated workflows and add AI where it creates measurable value: document processing, customer support and predictive operations.",
   },
   whyUs: {
     eyebrow: "Why Choose Us",

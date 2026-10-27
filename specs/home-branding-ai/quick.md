@@ -41,7 +41,7 @@ Header và footer đang dùng logo SVG tạm (chữ C trên nền tím). Cần t
 - [x] 2 Lấy và nén ảnh cho Home vào `public/images/home/`; thêm prop ảnh cho `PageHero`, `FeatureGrid`, `CaseStudies` và component `ImageSplit`; viết test render ảnh và alt
   - Kiểm chứng: `pnpm test` đạt và mọi file trong `public/images/home/` ≤ 300 KB
   - _Requirements: 1.2, 1.3, 1.5_
-- [ ] 3 Thêm nội dung `home.about`, `home.automation`, `aiCases` (3 dự án mẫu) và ảnh trong content; ghép vào trang Home; viết test trang Home có 1 h1, khối giới thiệu và ≥ 3 dự án AI
+- [x] 3 Thêm nội dung `home.about`, `home.automation`, `aiCases` (3 dự án mẫu) và ảnh trong content; ghép vào trang Home; viết test trang Home có 1 h1, khối giới thiệu và ≥ 3 dự án AI
   - Kiểm chứng: `pnpm test` đạt
   - _Requirements: 1.2, 1.3, 1.4, 1.6_
 - [ ] 4 Chạy build, check, lint, test toàn bộ và sửa mọi lỗi

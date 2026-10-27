@@ -137,6 +137,49 @@ export const serviceCases: CaseStudy[] = [
   },
 ];
 
+// Automation & AI projects shown on Home. Images reuse existing site photos until real project shots are available.
+export const aiCases: CaseStudy[] = [
+  {
+    slug: "intelligent-process-automation",
+    name: "Intelligent Document & Process Automation",
+    industry: "Banking & Insurance",
+    summary:
+      "RPA bots combined with OCR and AI document understanding read invoices, claims and KYC forms, validate the data against core systems and route exceptions to staff.",
+    technologies: ["Python", "RPA", "OCR", "LLM APIs", "PostgreSQL"],
+    results: [
+      { metric: "85%", label: "Documents processed without manual entry" },
+      { metric: "4x", label: "Faster claim turnaround" },
+    ],
+    image: { src: "/images/home/ai-process-automation.jpg", alt: "Engineers reviewing an automated workflow dashboard" },
+  },
+  {
+    slug: "llm-support-copilot",
+    name: "LLM Support Copilot & Chatbot",
+    industry: "Telecommunications & E-commerce",
+    summary:
+      "Retrieval-augmented chatbot and agent copilot that answers customers from a private knowledge base, drafts replies for agents and creates tickets automatically.",
+    technologies: ["LLM APIs", "Vector Database", "Node.js", "React", "Kubernetes"],
+    results: [
+      { metric: "60%", label: "Conversations resolved by the bot" },
+      { metric: "40%", label: "Shorter average handling time" },
+    ],
+    image: { src: "/images/home/ai-assistant.jpg", alt: "Cloud platform powering an AI customer assistant" },
+  },
+  {
+    slug: "predictive-operations-automation",
+    name: "Predictive Analytics & Operations Automation",
+    industry: "Manufacturing & Logistics",
+    summary:
+      "Machine learning models forecast demand and detect equipment anomalies from IoT data, then trigger automated work orders and replenishment in the ERP.",
+    technologies: ["Python", "scikit-learn", "Kafka", "Airflow", "AWS"],
+    results: [
+      { metric: "30%", label: "Less unplanned downtime" },
+      { metric: "92%", label: "Forecast accuracy" },
+    ],
+    image: { src: "/images/home/ai-predictive-ops.jpg", alt: "Operations team monitoring predictive maintenance alerts" },
+  },
+];
+
 export const testimonials: Testimonial[] = [
   {
     quote:

@@ -17,3 +17,12 @@
 - Requirements: 1.2, 1.3, 1.5
 - Commit: `spec(home-branding-ai): 2 Lấy và nén ảnh cho Home vào…`
 - Ghi chú: 8 ảnh JPEG trong public/images/home (123-219 KB), lấy từ site cũ commit 300a79a và ảnh dịch vụ hiện có. Thêm components/sections/types.ts cho kiểu ContentImage.
+
+## 3 Thêm nội dung `home.about`, `home.automation`, `aiCases` (3 dự án mẫu) và ảnh trong content; ghép vào trang Home; viết test trang Home có 1 h1, khối giới thiệu và ≥ 3 dự án AI — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:29
+- File đã đổi: `app/(default)/page.tsx`, `content/digital.ts`, `content/pages.ts`, `tests/home-page.test.tsx`
+- Kiểm chứng: `pnpm test` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 1.2, 1.3, 1.4, 1.6
+- Commit: `spec(home-branding-ai): 3 Thêm nội dung home.about, home.automation…`
+- Ghi chú: aiCases (3 dự án mẫu) nằm trong content/digital.ts (đã ghi chú NỘI DUNG MẪU); home.about và home.automation là nội dung mới, có comment trong content/pages.ts.

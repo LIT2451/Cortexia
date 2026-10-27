@@ -43,3 +43,11 @@
 - Requirements: 2.5, 2.6
 - Property: P1 pass (100 lần)
 - Commit: `spec(nextjs-migration): 2.2 Property P1: Hiển thị mục liên hệ theo cấu…`
+
+## 2.3 Tạo `lib/metadata.ts` với `pageMetadata()` và đặt `metadataBase` trong `app/layout.tsx` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:45
+- File đã đổi: `app/layout.tsx`, `lib/metadata.ts`
+- Kiểm chứng: `pnpm test && pnpm build` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 5.1, 5.2, 5.5
+- Commit: `spec(nextjs-migration): 2.3 Tạo lib/metadata.ts với pageMetadata() và…`

@@ -36,7 +36,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Viết bằng fast-check trong `tests/properties/contact-items.property.test.tsx`, `numRuns: 100`. Phần render cần `components/ui/contact-list.tsx` (tạo trong task này, nhận `cfg` qua props, mặc định là `site`)
     - Kiểm chứng: `pnpm test -- contact-items` pass
     - _Kiểm chứng: Requirements 2.5, 2.6_
-  - [ ] 2.3 Tạo `lib/metadata.ts` với `pageMetadata()` và đặt `metadataBase` trong `app/layout.tsx`
+  - [x] 2.3 Tạo `lib/metadata.ts` với `pageMetadata()` và đặt `metadataBase` trong `app/layout.tsx`
     - Root layout: `lang="en"`, metadata mặc định của Cortexia, bỏ "Create Next App"
     - Kiểm chứng: `pnpm test` và `pnpm build` pass
     - _Requirements: 5.1, 5.2, 5.5_

@@ -128,3 +128,12 @@
 - Requirements: 8.2
 - Property: P5 pass (100 lần)
 - Commit: `spec(nextjs-migration): 4.3 Property P5: Case study đủ trường`
+
+## 4.4 Dựng `components/sections/`: `page-hero.tsx` (chứa `h1` duy nhất), `stats.tsx`, `feature-grid.tsx`, `case-studies.tsx`, `testimonials.tsx`, `cta.tsx` (tiêu đề + nút tới `/contact`). Chuyển `page-illustration.tsx`, `spotlight.tsx` vào đây. Xoá `hero-home.tsx`, `features.tsx`, `workflows.tsx`, `testimonials.tsx`, `cta.tsx` cũ ở `components/` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:55
+- File đã đổi: `app/(default)/page.tsx`, `app/not-found.tsx`, `components/cta.tsx`, `components/features.tsx`, `components/hero-home.tsx`, `components/page-illustration.tsx`, `components/sections/case-studies.tsx`, `components/sections/cta.tsx`, `components/sections/feature-grid.tsx`, `components/sections/page-hero.tsx`, `components/sections/page-illustration.tsx`, `components/sections/section-heading.tsx`, `components/sections/spotlight.tsx`, `components/sections/stats.tsx`, `components/sections/styles.ts`, `components/sections/testimonials.tsx`, `components/spotlight.tsx`, `components/testimonials.tsx`, `components/workflows.tsx`, `tests/sections.test.tsx`
+- Kiểm chứng: `pnpm test -- sections && pnpm lint` → exit 0 (npx @next/codemod@canary next-lint-to-eslint-cli .) [spec-done tự chạy lại]
+- Requirements: 1.3, 3.1, 3.2, 5.5
+- Commit: `spec(nextjs-migration): 4.4 Dựng components/sections/: page-hero.tsx…`
+- Ghi chú: Thêm styles.ts và section-heading.tsx dùng chung; spotlight.tsx sửa hết cảnh báo lint; app/(default)/page.tsx đổi tối thiểu sang sections để build không vỡ (trang đầy đủ ở 5.1).

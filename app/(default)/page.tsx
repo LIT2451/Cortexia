@@ -1,24 +1,22 @@
-export const metadata = {
-  title: "Home - Open PRO",
-  description: "Page description",
-};
+import { pageMetadata } from "@/lib/metadata";
+import { home } from "@/content/pages";
+import { testimonials } from "@/content/digital";
+import PageIllustration from "@/components/sections/page-illustration";
+import PageHero from "@/components/sections/page-hero";
+import FeatureGrid from "@/components/sections/feature-grid";
+import Testimonials from "@/components/sections/testimonials";
+import Cta from "@/components/sections/cta";
 
-import PageIllustration from "@/components/page-illustration";
-import Hero from "@/components/hero-home";
-import Workflows from "@/components/workflows";
-import Features from "@/components/features";
-import Testimonials from "@/components/testimonials";
-import Cta from "@/components/cta";
+export const metadata = pageMetadata({ path: "/", ...home.meta });
 
 export default function Home() {
   return (
     <>
       <PageIllustration />
-      <Hero />
-      <Workflows />
-      <Features />
-      <Testimonials />
-      <Cta />
+      <PageHero title={home.hero.titleLines} text={home.hero.text} primary={home.hero.primary} secondary={home.hero.secondary} />
+      <FeatureGrid {...home.services} />
+      <Testimonials title="What Our Clients Say" items={testimonials} />
+      <Cta {...home.cta} />
     </>
   );
 }

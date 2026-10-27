@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PageIllustration from "@/components/page-illustration";
+import PageIllustration from "@/components/sections/page-illustration";
 
 export const metadata = {
   title: "Page Not Found - Cortexia",

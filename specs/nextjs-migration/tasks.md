@@ -83,7 +83,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Viết bằng fast-check trong `tests/properties/case-studies.property.test.ts` (dùng `fc.constantFrom` trên tập case study), `numRuns: 100`
     - Kiểm chứng: `pnpm test -- case-studies` pass
     - _Kiểm chứng: Requirements 8.2_
-  - [ ] 4.4 Dựng `components/sections/`: `page-hero.tsx` (chứa `h1` duy nhất), `stats.tsx`, `feature-grid.tsx`, `case-studies.tsx`, `testimonials.tsx`, `cta.tsx` (tiêu đề + nút tới `/contact`). Chuyển `page-illustration.tsx`, `spotlight.tsx` vào đây. Xoá `hero-home.tsx`, `features.tsx`, `workflows.tsx`, `testimonials.tsx`, `cta.tsx` cũ ở `components/`.
+  - [x] 4.4 Dựng `components/sections/`: `page-hero.tsx` (chứa `h1` duy nhất), `stats.tsx`, `feature-grid.tsx`, `case-studies.tsx`, `testimonials.tsx`, `cta.tsx` (tiêu đề + nút tới `/contact`). Chuyển `page-illustration.tsx`, `spotlight.tsx` vào đây. Xoá `hero-home.tsx`, `features.tsx`, `workflows.tsx`, `testimonials.tsx`, `cta.tsx` cũ ở `components/`.
     - Mọi component nhận dữ liệu qua props, ảnh trang trí có `alt=""`, phần tử tương tác có `focus-visible`
     - Unit test `tests/sections.test.tsx`: `PageHero` render đúng 1 `h1`, `Cta` có link `/contact`, `Testimonials` không render `<img>`
     - Kiểm chứng: `pnpm test -- sections` và `pnpm lint` pass

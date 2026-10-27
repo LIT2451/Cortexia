@@ -77,3 +77,12 @@
 - Kiểm chứng: `pnpm test -- header` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
 - Requirements: 2.2, 3.4, 3.5, 4.2
 - Commit: `spec(nextjs-migration): 3.2 Sửa components/ui/header.tsx: menu 5 liên…`
+
+## 3.3 Property P3: Đúng một liên kết đang hoạt động — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:48
+- File đã đổi: `tests/properties/nav.property.test.ts`
+- Kiểm chứng: `pnpm test -- nav` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 3.5
+- Property: P3 pass (100 lần mỗi chiều)
+- Commit: `spec(nextjs-migration): 3.3 Property P3: Đúng một liên kết đang hoạt…`

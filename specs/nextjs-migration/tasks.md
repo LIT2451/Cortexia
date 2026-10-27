@@ -55,7 +55,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Unit test `tests/header.test.tsx` (mock `usePathname`): bấm nút menu đổi `aria-expanded` thành `true` và hiện đủ 5 link. Escape đóng menu. Có render `Logo`.
     - Kiểm chứng: `pnpm test -- header` pass
     - _Requirements: 2.2, 3.4, 3.5, 4.2, NFR 3_
-  - [ ] 3.3 Property P3: Đúng một liên kết đang hoạt động
+  - [x] 3.3 Property P3: Đúng một liên kết đang hoạt động
     - *Với mọi* pathname thuộc 5 URL (có thể thêm `/` cuối), có đúng một phần tử `l` của `navLinks` với `isActive(pathname, l.href) === true`, và đó là trang tương ứng. *Với mọi* pathname ngẫu nhiên khác 5 URL đó, không có liên kết nào active.
     - Viết bằng fast-check trong `tests/properties/nav.property.test.ts`, `numRuns: 100`
     - Kiểm chứng: `pnpm test -- nav` pass

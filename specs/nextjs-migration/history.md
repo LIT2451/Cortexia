@@ -180,3 +180,12 @@
 - Requirements: 6.3
 - Property: P2 pass (100 lần)
 - Commit: `spec(nextjs-migration): 5.4 Property P2: Validation form liên hệ`
+
+## 5.5 Viết `components/contact-form.tsx` và `app/(default)/contact/page.tsx` (hero, `ContactList`, form, các bước tiếp nhận, CTA) — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:02
+- File đã đổi: `app/(default)/contact/page.tsx`, `components/contact-form.tsx`, `tests/contact-form.test.tsx`, `tests/contact-page.test.tsx`
+- Kiểm chứng: `pnpm test -- contact && pnpm build && test -f out/contact.html` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 1.1, 1.3, 2.3, 6.1, 6.2, 6.3, 6.4
+- Commit: `spec(nextjs-migration): 5.5 Viết components/contact-form.tsx và…`
+- Ghi chú: Site cũ không có khối CTA trên trang Contact nên trang mới cũng không thêm (nút về /contact trên chính trang Contact là thừa). Form không gọi mạng, chỉ hiện role=status.

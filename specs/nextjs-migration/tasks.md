@@ -107,7 +107,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Viết bằng fast-check trong `tests/properties/validate-contact.property.test.ts`, `numRuns: 100`. Phần focus kiểm qua `firstInvalidField`.
     - Kiểm chứng: `pnpm test -- validate-contact` pass
     - _Kiểm chứng: Requirements 6.3_
-  - [ ] 5.5 Viết `components/contact-form.tsx` và `app/(default)/contact/page.tsx` (hero, `ContactList`, form, các bước tiếp nhận, CTA)
+  - [x] 5.5 Viết `components/contact-form.tsx` và `app/(default)/contact/page.tsx` (hero, `ContactList`, form, các bước tiếp nhận, CTA)
     - Unit test `tests/contact-form.test.tsx`: có 5 trường, mỗi ô có label gắn đúng (`getByLabelText`). Gửi rỗng thì có lỗi cạnh ô, `aria-invalid`, focus vào Name. Gửi hợp lệ thì hiện câu cảm ơn ở 6.2, các ô rỗng, `window.alert` không được gọi.
     - Unit test `tests/contact-page.test.tsx`: trang có các bước tiếp nhận và địa chỉ
     - Kiểm chứng: `pnpm test -- contact` pass. `pnpm build` tạo `out/contact.html`

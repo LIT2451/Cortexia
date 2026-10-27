@@ -74,7 +74,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Lấy văn bản từ `tests/fixtures/legacy-text.json` và các file HTML cũ
     - Kiểm chứng: `pnpm lint` pass. Trong `content/pages.ts` không có "dvtechnic" (không phân biệt hoa thường)
     - _Requirements: 1.2, 2.1, 5.1_
-  - [ ] 4.2 Tạo `content/digital.ts`: ghi chú "NỘI DUNG MẪU" ở đầu file, 4 `stats`, `featuredCase`, 6 `portfolioCases`, 2 `serviceCases`, `testimonials` (chỉ chức danh và loại hình doanh nghiệp) thuộc ngành Digital
+  - [x] 4.2 Tạo `content/digital.ts`: ghi chú "NỘI DUNG MẪU" ở đầu file, 4 `stats`, `featuredCase`, 6 `portfolioCases`, 2 `serviceCases`, `testimonials` (chỉ chức danh và loại hình doanh nghiệp) thuộc ngành Digital
     - Unit test `tests/digital.test.ts`: dòng đầu chứa "NỘI DUNG MẪU". `stats.length === 4` và không chứa "10+", "150+", "50+". Số lời chứng thực bằng Site cũ. Object `Testimonial` chỉ có các khoá `quote`, `role`, `companyType`.
     - Kiểm chứng: `pnpm test -- digital` pass
     - _Requirements: 8.1, 8.3, 8.4, 8.5_

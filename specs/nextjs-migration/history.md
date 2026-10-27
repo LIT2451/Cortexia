@@ -110,3 +110,12 @@
 - Kiểm chứng: `pnpm lint && ! grep -qi dvtechnic content/pages.ts` → exit 0 (npx @next/codemod@canary next-lint-to-eslint-cli .) [spec-done tự chạy lại]
 - Requirements: 1.2, 2.1, 5.1
 - Commit: `spec(nextjs-migration): 4.1 Tạo content/pages.ts với văn bản giữ…`
+
+## 4.2 Tạo `content/digital.ts`: ghi chú "NỘI DUNG MẪU" ở đầu file, 4 `stats`, `featuredCase`, 6 `portfolioCases`, 2 `serviceCases`, `testimonials` (chỉ chức danh và loại hình doanh nghiệp) thuộc ngành Digital — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:52
+- File đã đổi: `content/digital.ts`, `tests/digital.test.ts`
+- Kiểm chứng: `pnpm test -- digital` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 8.1, 8.3, 8.4, 8.5
+- Commit: `spec(nextjs-migration): 4.2 Tạo content/digital.ts: ghi chú "NỘI DUNG…`
+- Ghi chú: Site cũ không có khối lời chứng thực (0 mục), nên 'số lời chứng thực bằng Site cũ' không áp dụng được nguyên văn; giữ 3 mục mẫu cho khối Testimonials ở Home/About theo design, test khoá đúng 3 mục

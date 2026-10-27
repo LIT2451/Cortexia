@@ -8,3 +8,4 @@ next-env.d.ts
 *.tsbuildinfo
 .vscode/
 .idea/
+cortexia-site.zip

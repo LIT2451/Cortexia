@@ -60,7 +60,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Viết bằng fast-check trong `tests/properties/nav.property.test.ts`, `numRuns: 100`
     - Kiểm chứng: `pnpm test -- nav` pass
     - _Kiểm chứng: Requirements 3.5_
-  - [ ] 3.4 Sửa `components/ui/footer.tsx`: cột Quick Links, Services, Contact Us (`ContactList`), logo, `© <năm> Cortexia`. Bỏ link mẫu và icon mạng xã hội. Ảnh minh hoạ có `alt=""`.
+  - [x] 3.4 Sửa `components/ui/footer.tsx`: cột Quick Links, Services, Contact Us (`ContactList`), logo, `© <năm> Cortexia`. Bỏ link mẫu và icon mạng xã hội. Ảnh minh hoạ có `alt=""`.
     - Unit test `tests/footer.test.tsx`: có địa chỉ, có `Logo`, mọi `href` thuộc 5 URL, không có "Cruip"
     - Kiểm chứng: `pnpm test -- footer` pass
     - _Requirements: 2.2, 2.3, 4.2, NFR 2_

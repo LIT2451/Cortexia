@@ -86,3 +86,11 @@
 - Requirements: 3.5
 - Property: P3 pass (100 lần mỗi chiều)
 - Commit: `spec(nextjs-migration): 3.3 Property P3: Đúng một liên kết đang hoạt…`
+
+## 3.4 Sửa `components/ui/footer.tsx`: cột Quick Links, Services, Contact Us (`ContactList`), logo, `© <năm> Cortexia`. Bỏ link mẫu và icon mạng xã hội. Ảnh minh hoạ có `alt=""` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:48
+- File đã đổi: `components/ui/footer.tsx`, `tests/footer.test.tsx`
+- Kiểm chứng: `pnpm test -- footer` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 2.2, 2.3, 4.2
+- Commit: `spec(nextjs-migration): 3.4 Sửa components/ui/footer.tsx: cột Quick…`

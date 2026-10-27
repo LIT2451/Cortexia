@@ -45,6 +45,32 @@ describe("scripts/check-build.mjs", () => {
     expect(r.output).toContain("index.html: og:url không tuyệt đối trên https://digitalcortexia.com: /about");
   });
 
+  it("báo lỗi khi một ảnh nội dung dùng ở nhiều vị trí hoặc hai file ảnh trùng nội dung", () => {
+    const dir = mkdtempSync(join(tmpdir(), "check-build-dup-"));
+    try {
+      cpSync(join(fixtures, "build-good"), dir, { recursive: true });
+      const jpg = Buffer.from([0xff, 0xd8, 0xff, 0xe0, 1, 2, 3]);
+      writeFileSync(join(dir, "images/a.jpg"), jpg);
+      writeFileSync(join(dir, "images/b.jpg"), jpg);
+      writeFileSync(join(dir, "images/c.jpg"), Buffer.from([0xff, 0xd8, 9]));
+      const addImg = (page: string, src: string) => {
+        const file = join(dir, page);
+        writeFileSync(file, readFileSync(file, "utf8").replace("</body>", `<img src="${src}" alt="x"/></body>`));
+      };
+      addImg("index.html", "/images/a.jpg");
+      addImg("services.html", "/images/a.jpg");
+      addImg("about.html", "/images/c.jpg");
+      addImg("about.html", "/images/c.jpg");
+      const r = runDir(dir);
+      expect(r.code).toBe(1);
+      expect(r.output).toContain("/images/a.jpg: ảnh dùng 2 lần (index.html, services.html)");
+      expect(r.output).toContain("/images/c.jpg: ảnh dùng 2 lần (about.html, about.html)");
+      expect(r.output).toContain("images/a.jpg: trùng nội dung với images/b.jpg");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("thư mục không tồn tại thì thoát mã 1", () => {
     expect(run("does-not-exist").code).toBe(1);
   });

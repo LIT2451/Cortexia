@@ -3,6 +3,7 @@
 // Usage: node scripts/check-build.mjs [outDir=out] [--root <sourceRoot>]
 // Prints every problem found and exits 1, or exits 0 when the build is clean.
 
+import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import { FORBIDDEN } from "./forbidden-names.mjs";
@@ -141,6 +142,35 @@ export function checkBuild({ out, root }) {
       const u = m[1];
       if (u.startsWith("data:") || !isInternal(u)) continue;
       if (!resolveUrl(out, file, u)) err(rel(file), `tài nguyên trong CSS không tồn tại: ${u}`);
+    }
+  }
+
+  // Content images: each src used once across the routes (SVG decorations and logos excluded)
+  const imageUses = new Map();
+  for (const page of PAGES.filter((p) => p !== "404.html")) {
+    const file = join(out, page);
+    if (!existsSync(file)) continue;
+    for (const tag of readFileSync(file, "utf8").match(/<img\b[^>]*>/gi) ?? []) {
+      const src = attr(tag, "src");
+      if (!src || /\.svg(?:[?#]|$)/i.test(src) || src.includes("/images/logo/") || src.startsWith("data:")) continue;
+      const key = src.split(/[?#]/)[0];
+      imageUses.set(key, [...(imageUses.get(key) ?? []), page]);
+    }
+  }
+  for (const [src, pages] of imageUses) {
+    if (pages.length > 1) err(src, `ảnh dùng ${pages.length} lần (${pages.join(", ")}), mỗi ảnh chỉ được dùng một lần`);
+  }
+
+  // Content images: no two files with the same bytes
+  const images = join(out, "images");
+  if (existsSync(images)) {
+    const byHash = new Map();
+    for (const file of walk(images).filter((f) => /\.(jpe?g|png|webp)$/i.test(f))) {
+      const hash = createHash("sha256").update(readFileSync(file)).digest("hex");
+      byHash.set(hash, [...(byHash.get(hash) ?? []), rel(file)]);
+    }
+    for (const same of byHash.values()) {
+      if (same.length > 1) err(same[0], `trùng nội dung với ${same.slice(1).join(", ")}`);
     }
   }
 

@@ -1,6 +1,7 @@
 import { eyebrowLine, eyebrowText, gradientText } from "./styles";
 
-export type SectionHeadingProps = { eyebrow?: string; title: string; text?: string };
+/** `text` may hold several paragraphs. */
+export type SectionHeadingProps = { eyebrow?: string; title: string; text?: string | string[] };
 
 /** Centered h2 block used at the top of most sections. */
 export default function SectionHeading({ eyebrow, title, text }: SectionHeadingProps) {
@@ -12,7 +13,11 @@ export default function SectionHeading({ eyebrow, title, text }: SectionHeadingP
         </div>
       )}
       <h2 className={`${gradientText} pb-4 text-3xl md:text-4xl`}>{title}</h2>
-      {text && <p className="text-lg text-indigo-200/65">{text}</p>}
+      {(Array.isArray(text) ? text : text ? [text] : []).map((p) => (
+        <p key={p} className="text-lg text-indigo-200/65 [&+p]:mt-4">
+          {p}
+        </p>
+      ))}
     </div>
   );
 }

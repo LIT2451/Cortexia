@@ -14,6 +14,8 @@ export function pageMetadata(p: { path: string; title: string; description: stri
       title: p.title,
       description: p.description,
       siteName: site.name,
+      // A page-level openGraph replaces the file convention, so list the image explicitly.
+      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: site.name }],
     },
   };
 }

@@ -10,7 +10,7 @@ describe("P4: Metadata tuyệt đối", () => {
       fc.property(path, fc.string(), fc.string(), (p, title, description) => {
         const m = pageMetadata({ path: p, title, description });
         const canonical = String(m.alternates?.canonical);
-        const og = m.openGraph as { url?: unknown; type?: unknown } | undefined;
+        const og = m.openGraph as { url?: unknown; type?: unknown; images?: { url: string }[] } | undefined;
         const ogUrl = String(og?.url);
 
         expect(canonical.startsWith("https://digitalcortexia.com")).toBe(true);
@@ -18,6 +18,7 @@ describe("P4: Metadata tuyệt đối", () => {
         expect(ogUrl.startsWith("https://digitalcortexia.com")).toBe(true);
         expect(ogUrl.endsWith(p)).toBe(true);
         expect(og?.type).toBe("website");
+        expect(og?.images?.[0]?.url).toBe("/opengraph-image");
       }),
       { numRuns: 100 },
     );

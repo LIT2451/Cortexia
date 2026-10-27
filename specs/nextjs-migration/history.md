@@ -145,3 +145,12 @@
 - Kiểm chứng: `test $(ls public/images/services/service-*.jpg | wc -l) -eq 6` → exit 0 (không có output) [spec-done tự chạy lại]
 - Requirements: 1.2
 - Commit: `spec(nextjs-migration): 4.5 Copy 6 ảnh images/services/service-*.jpg…`
+
+## 5.1 Viết `app/(default)/page.tsx` (Trang chủ) và `app/(default)/about/page.tsx` theo bảng Trang trong design, có `metadata` từ `pageMetadata` — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:57
+- File đã đổi: `app/(default)/about/page.tsx`, `app/(default)/page.tsx`, `components/sections/feature-grid.tsx`, `components/sections/section-heading.tsx`, `lib/metadata.ts`, `tests/properties/metadata.property.test.ts`
+- Kiểm chứng: `pnpm build && test -f out/index.html && test -f out/about.html` → exit 0 (○  (Static)  prerendered as static content) [spec-done tự chạy lại]
+- Requirements: 1.1, 1.2, 1.3, 5.1, 8.1, 8.3
+- Commit: `spec(nextjs-migration): 5.1 Viết app/(default)/page.tsx (Trang chủ) và…`
+- Ghi chú: pageMetadata bổ sung openGraph.images (/opengraph-image) vì openGraph của từng trang ghi đè file convention, làm mất og:image (5.1); P4 kiểm thêm og:image. SectionHeading nhận text nhiều đoạn, FeatureGrid cho text tùy chọn (dùng cho tech stack).

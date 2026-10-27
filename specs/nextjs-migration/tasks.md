@@ -92,8 +92,8 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: có đủ 6 file trong `public/images/services/`
     - _Requirements: 1.2_
 
-- [ ] 5. Các trang
-  - [ ] 5.1 Viết `app/(default)/page.tsx` (Trang chủ) và `app/(default)/about/page.tsx` theo bảng Trang trong design, có `metadata` từ `pageMetadata`
+- [-] 5. Các trang
+  - [x] 5.1 Viết `app/(default)/page.tsx` (Trang chủ) và `app/(default)/about/page.tsx` theo bảng Trang trong design, có `metadata` từ `pageMetadata`
     - Kiểm chứng: `pnpm build` tạo `out/index.html`, `out/about.html`
     - _Requirements: 1.1, 1.2, 1.3, 5.1, 8.1, 8.3_
   - [ ] 5.2 Viết `app/(default)/services/page.tsx` và `app/(default)/portfolio/page.tsx` (6 dịch vụ kèm ảnh có `alt`, case study từ `content/digital.ts`)

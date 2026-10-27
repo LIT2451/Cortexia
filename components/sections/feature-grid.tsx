@@ -4,7 +4,7 @@ import { card, focusRing } from "./styles";
 
 export type FeatureItem = {
   title: string;
-  text: string;
+  text?: string;
   /** Step number such as "01", shown instead of the icon. */
   step?: string;
   badge?: string;
@@ -45,7 +45,7 @@ export default function FeatureGrid({ eyebrow, title, text, items, columns = 3, 
                     </span>
                   )}
                   <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">{item.title}</h3>
-                  <p className="text-indigo-200/65">{item.text}</p>
+                  {item.text && <p className="text-indigo-200/65">{item.text}</p>}
                   {item.bullets && item.bullets.length > 0 && (
                     <ul className="mt-4 flex flex-wrap gap-2">
                       {item.bullets.map((b) => (

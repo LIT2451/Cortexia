@@ -51,3 +51,12 @@
 - Kiểm chứng: `pnpm test && pnpm build` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
 - Requirements: 5.1, 5.2, 5.5
 - Commit: `spec(nextjs-migration): 2.3 Tạo lib/metadata.ts với pageMetadata() và…`
+
+## 2.4 Property P4: Metadata tuyệt đối — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 10:46
+- File đã đổi: `tests/properties/metadata.property.test.ts`
+- Kiểm chứng: `pnpm test -- metadata` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 5.2
+- Property: P4 pass (100 lần)
+- Commit: `spec(nextjs-migration): 2.4 Property P4: Metadata tuyệt đối`

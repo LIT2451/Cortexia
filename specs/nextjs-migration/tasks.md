@@ -24,7 +24,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `pnpm lint`, `pnpm test` pass. `pnpm build` tạo `out/index.html`
     - _Requirements: 7.1, 7.2, NFR 5_
 
-- [-] 2. Thông tin thương hiệu và helper
+- [x] 2. Thông tin thương hiệu và helper
   - [x] 2.1 Tạo `config/site.ts` và `lib/contact.ts`
     - `site` và `navLinks` theo design. `email`, `phone`, `taxId` bằng `""`. Địa chỉ "Tầng 6, tòa C, 22 Thành Công, Ba Đình, Hà Nội".
     - `contactItems(cfg)` bỏ mục rỗng/khoảng trắng, sinh `mailto:` và `tel:`
@@ -40,7 +40,7 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Root layout: `lang="en"`, metadata mặc định của Cortexia, bỏ "Create Next App"
     - Kiểm chứng: `pnpm test` và `pnpm build` pass
     - _Requirements: 5.1, 5.2, 5.5_
-  - [ ] 2.4 Property P4: Metadata tuyệt đối
+  - [x] 2.4 Property P4: Metadata tuyệt đối
     - *Với mọi* path bắt đầu bằng `/` cùng title/description bất kỳ, `pageMetadata()` trả `canonical` và `openGraph.url` bắt đầu bằng `https://digitalcortexia.com` và kết thúc bằng path, `openGraph.type === "website"`.
     - Viết bằng fast-check trong `tests/properties/metadata.property.test.ts`, `numRuns: 100`
     - Kiểm chứng: `pnpm test -- metadata` pass

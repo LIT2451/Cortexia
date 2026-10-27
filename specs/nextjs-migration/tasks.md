@@ -116,8 +116,8 @@ Tham chiếu: [requirements.md](requirements.md), [design.md](design.md)
     - Kiểm chứng: `pnpm build` tạo `out/sitemap.xml` (5 URL `https://digitalcortexia.com`), `out/robots.txt` có dòng Sitemap, `out/CNAME`
     - _Requirements: 5.3, 5.4_
 
-- [ ] 6. Kiểm tra bản build
-  - [ ] 6.1 Viết `scripts/check-build.mjs` theo mục "Kiểm tra sau build" của design. Script nhận thư mục qua đối số (mặc định `out`).
+- [-] 6. Kiểm tra bản build
+  - [x] 6.1 Viết `scripts/check-build.mjs` theo mục "Kiểm tra sau build" của design. Script nhận thư mục qua đối số (mặc định `out`).
     - Unit test `tests/check-build.test.ts` dùng fixture `tests/fixtures/build-bad/` (ảnh không tồn tại, 2 `h1`, chuỗi "dvtechnic", og:url tương đối) và `tests/fixtures/build-good/`: bản lỗi thoát mã 1 và liệt kê từng lỗi, bản đúng thoát mã 0
     - Kiểm chứng: `pnpm test -- check-build` pass
     - _Requirements: 1.4, 2.1, 4.2, 5.1, 5.2, 5.5, 7.4, 8.5, NFR 2_

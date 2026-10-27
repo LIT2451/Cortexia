@@ -197,3 +197,12 @@
 - Kiểm chứng: `pnpm build && test $(grep -o "<loc>https://digitalcortexia.com[^<]*</loc>" out/sitemap.xml | wc -l) -eq 5 && grep -q "Sitemap: https://digitalcortexia.com/sitemap.xml" out/robots.txt && grep -qx digitalcortexia.com out/CNAME` → exit 0 (○  (Static)  prerendered as static content) [spec-done tự chạy lại]
 - Requirements: 5.3, 5.4
 - Commit: `spec(nextjs-migration): 5.6 Tạo app/sitemap.ts, app/robots.ts…`
+
+## 6.1 Viết `scripts/check-build.mjs` theo mục "Kiểm tra sau build" của design. Script nhận thư mục qua đối số (mặc định `out`) — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:05
+- File đã đổi: `scripts/check-build.mjs`, `tests/check-build.test.ts`, `tests/fixtures/build-bad/404.html`, `tests/fixtures/build-bad/CNAME`, `tests/fixtures/build-bad/about.html`, `tests/fixtures/build-bad/contact.html`, `tests/fixtures/build-bad/fonts/nacelle.woff2`, `tests/fixtures/build-bad/icon.svg`, `tests/fixtures/build-bad/images/logo.svg`, `tests/fixtures/build-bad/index.html`, `tests/fixtures/build-bad/portfolio.html`, `tests/fixtures/build-bad/robots.txt`, `tests/fixtures/build-bad/services.html`, `tests/fixtures/build-bad/site.css`, `tests/fixtures/build-bad/sitemap.xml`, `tests/fixtures/build-good/404.html`, `tests/fixtures/build-good/CNAME`, `tests/fixtures/build-good/about.html`, `tests/fixtures/build-good/contact.html`, `tests/fixtures/build-good/fonts/nacelle.woff2`, `tests/fixtures/build-good/icon.svg`, `tests/fixtures/build-good/images/logo.svg`, `tests/fixtures/build-good/index.html`, `tests/fixtures/build-good/portfolio.html`, `tests/fixtures/build-good/robots.txt`, `tests/fixtures/build-good/services.html`, `tests/fixtures/build-good/site.css`, `tests/fixtures/build-good/sitemap.xml`
+- Kiểm chứng: `pnpm test -- check-build` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 1.4, 2.1, 4.2, 5.1, 5.2, 5.5, 7.4, 8.5
+- Commit: `spec(nextjs-migration): 6.1 Viết scripts/check-build.mjs theo mục…`
+- Ghi chú: Script có thêm cờ --root để test quét nguồn trong fixture thay vì repo thật. pnpm check trên out/ thật: OK.

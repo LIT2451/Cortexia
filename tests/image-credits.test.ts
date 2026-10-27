@@ -6,7 +6,6 @@ import { home, serviceList } from "@/content/pages";
 import { aiCases, featuredCase, portfolioCases, serviceCases } from "@/content/digital";
 
 const contentImages = [
-  home.hero.image,
   ...home.services.items.map((i) => i.image),
   home.about.image,
   ...serviceList.map((s) => s.image),
@@ -23,7 +22,13 @@ describe("Nguồn ảnh (1.2)", () => {
 
   it("file ghi trong nguồn tồn tại, mỗi file một lần", () => {
     expect(credited.size).toBe(imageCredits.length);
-    for (const c of imageCredits) expect(existsSync(join(process.cwd(), "public", c.file)), c.file).toBe(true);
+    // Content images live in public/, the Open Graph image in app/.
+    const exists = (f: string) => ["public", "app"].some((dir) => existsSync(join(process.cwd(), dir, f)));
+    for (const c of imageCredits) expect(exists(c.file), c.file).toBe(true);
+  });
+
+  it("ảnh Open Graph có nguồn", () => {
+    expect(credited).toContain("/opengraph-image.jpg");
   });
 
   it("nguồn là ảnh Unsplash, có tác giả", () => {

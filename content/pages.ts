@@ -74,7 +74,6 @@ export const home = {
     text: "Cortexia delivers high-performance custom software development, offshore dedicated engineering teams, and robust telecommunications infrastructure with predictable costs and strict IP protection.",
     primary: { label: "Explore Solutions", href: "/services" as const },
     secondary: { label: "Consult an Expert", href: "/contact" as const },
-    image: { src: "/images/home/home-hero.jpg", alt: "Modern data center with rows of white server cabinets" },
   },
   services: {
     eyebrow: "What We Do",

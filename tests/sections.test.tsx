@@ -38,7 +38,7 @@ describe("components/sections", () => {
   });
 
   it("PageHero chỉ render ảnh khi có prop image, kèm alt", () => {
-    const image = { src: "/images/home/home-hero.jpg", alt: "Global technology network" };
+    const image = { src: "/images/services/service-cloud-devops.jpg", alt: "Rows of server racks in a data center" };
     const without = render(<PageHero title="Title" />);
     expect(without.container.querySelectorAll("img")).toHaveLength(0);
     without.unmount();
@@ -105,7 +105,6 @@ describe("components/sections", () => {
 
   it("không ảnh nội dung nào được khai báo ở hai vị trí", () => {
     const srcs = [
-      home.hero.image.src,
       ...home.services.items.map((i) => i.image.src),
       home.about.image.src,
       ...serviceList.map((s) => s.image.src),

@@ -11,11 +11,16 @@ afterEach(cleanup);
 const publicFile = (src: string) => existsSync(join(process.cwd(), "public", src));
 
 describe("Trang Home", () => {
-  it("có đúng 1 h1 và ảnh hero kèm alt", () => {
+  it("có đúng 1 h1, hero không có ảnh nhưng giữ đoạn văn và 2 nút", () => {
     const { container } = render(<HomePage />);
     expect(container.querySelectorAll("h1")).toHaveLength(1);
-    expect(screen.getByAltText(home.hero.image.alt)).toBeTruthy();
-    expect(publicFile(home.hero.image.src)).toBe(true);
+    const hero = container.querySelector("h1")!.closest("section")!;
+    expect(hero.querySelectorAll("img")).toHaveLength(0);
+    expect(hero.textContent).toContain(home.hero.text);
+    expect(hero.querySelector(`a[href="${home.hero.primary.href}"]`)?.textContent).toContain(home.hero.primary.label);
+    expect(hero.querySelector(`a[href="${home.hero.secondary.href}"]`)?.textContent).toContain(home.hero.secondary.label);
+    expect("image" in home.hero).toBe(false);
+    expect(publicFile("/images/home/home-hero.jpg")).toBe(false);
   });
 
   it("mỗi thẻ dịch vụ có ảnh", () => {

@@ -17,13 +17,7 @@ export default function Home() {
   return (
     <>
       <PageIllustration />
-      <PageHero
-        title={hero.titleLines}
-        text={hero.text}
-        primary={hero.primary}
-        secondary={hero.secondary}
-        image={hero.image}
-      />
+      <PageHero title={hero.titleLines} text={hero.text} primary={hero.primary} secondary={hero.secondary} />
       <Stats items={stats} />
       <FeatureGrid {...services} />
       <ImageSplit {...about} />

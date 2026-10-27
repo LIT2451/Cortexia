@@ -7,7 +7,8 @@ const unsplash = (slug: string) => `https://unsplash.com/photos/${slug}`;
 
 export const imageCredits: ImageCredit[] = [
   {
-    file: "/images/home/home-hero.jpg",
+    // Open Graph image (app/opengraph-image.jpg), cropped to 1200x630.
+    file: "/opengraph-image.jpg",
     source: unsplash("modern-data-center-with-rows-of-white-server-cabinets-fImCPTZ026U"),
     author: "Tony Marinescu",
   },

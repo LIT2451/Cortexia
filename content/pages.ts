@@ -74,7 +74,7 @@ export const home = {
     text: "Cortexia delivers high-performance custom software development, offshore dedicated engineering teams, and robust telecommunications infrastructure with predictable costs and strict IP protection.",
     primary: { label: "Explore Solutions", href: "/services" as const },
     secondary: { label: "Consult an Expert", href: "/contact" as const },
-    image: { src: "/images/home/home-hero.jpg", alt: "Global technology network connecting cloud and telecom systems" },
+    image: { src: "/images/home/home-hero.jpg", alt: "Global technology network" },
   },
   services: {
     eyebrow: "What We Do",
@@ -83,17 +83,17 @@ export const home = {
       {
         title: "Custom Software Engineering",
         text: "Full-lifecycle enterprise software, modern cloud-native architectures, and robust web applications designed for scale.",
-        image: { src: "/images/home/service-software.jpg", alt: "Software engineers building an enterprise application" },
+        image: { src: "/images/home/service-custom-software.jpg", alt: "Enterprise supply chain ERP system" },
       },
       {
         title: "Offshore Dedicated Teams (ODC)",
         text: "Scale your development bandwidth with vetted full-stack engineers, QA specialists, and DevOps talent under transparent agile governance.",
-        image: { src: "/images/home/service-teams.jpg", alt: "Dedicated offshore engineering team collaborating" },
+        image: { src: "/images/home/service-offshore-teams.jpg", alt: "Solutions consultation with a client team" },
       },
       {
         title: "Telecom & Network Solutions",
         text: "Carrier-grade VoIP platforms, telecommunications routing systems, unified communications, and 24/7 network operations center (NOC) support.",
-        image: { src: "/images/home/service-telecom.jpg", alt: "Telecom network infrastructure" },
+        image: { src: "/images/home/service-telecom-platform.jpg", alt: "Carrier-grade telecom platform dashboard" },
       },
     ] satisfies (Item & { image: { src: string; alt: string } })[],
   },
@@ -111,7 +111,7 @@ export const home = {
       "Bilingual tech leads and agile governance for distributed teams",
       "Security-first engineering with NDA and IP protection",
     ],
-    image: { src: "/images/home/company-team.jpg", alt: "Cortexia engineering team working together" },
+    image: { src: "/images/home/about-engineering-team.jpg", alt: "Cortexia engineering team" },
     link: { label: "Discover Our Story", href: "/about" as const },
   },
   automation: {

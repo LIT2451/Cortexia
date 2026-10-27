@@ -82,7 +82,7 @@ Rà soát nội dung:
 - [x] 2 Thêm quy tắc không trùng ảnh (cùng `src` trên nhiều vị trí, trùng hash) vào `check-build.mjs`; viết test với fixture lỗi cho cả hai trường hợp
   - Kiểm chứng: `pnpm test` đạt; `pnpm build && pnpm check` báo lỗi trùng ảnh trên code hiện tại
   - _Requirements: 1.2, 1.3_
-- [ ] 3 Phân bổ lại ảnh theo bảng: lấy ảnh từ commit `300a79a`, nén, lưu vào `public/images/home/`, xoá bản sao cũ, nén 6 ảnh Services, cập nhật đường dẫn và alt trong content
+- [x] 3 Phân bổ lại ảnh theo bảng: lấy ảnh từ commit `300a79a`, nén, lưu vào `public/images/home/`, xoá bản sao cũ, nén 6 ảnh Services, cập nhật đường dẫn và alt trong content
   - Kiểm chứng: `pnpm build && pnpm check && pnpm test` đạt (gồm quy tắc không trùng ảnh) và không file nào trong `public/images` > 300 KB
   - _Requirements: 1.2, 1.4_
 - [ ] 4 Sửa nội dung theo bảng rà soát (a–h), cập nhật `legacy-text.json` và test liên quan

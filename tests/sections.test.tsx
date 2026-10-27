@@ -8,8 +8,8 @@ import CaseStudies from "@/components/sections/case-studies";
 import ImageSplit from "@/components/sections/image-split";
 import Cta from "@/components/sections/cta";
 import Testimonials from "@/components/sections/testimonials";
-import { home } from "@/content/pages";
-import { testimonials } from "@/content/digital";
+import { home, serviceList } from "@/content/pages";
+import { aiCases, featuredCase, portfolioCases, serviceCases, testimonials } from "@/content/digital";
 
 afterEach(cleanup);
 
@@ -54,7 +54,7 @@ describe("components/sections", () => {
       <FeatureGrid
         title="Services"
         items={[
-          { title: "With image", text: "a", image: { src: "/images/home/service-software.jpg", alt: "Engineers writing code" } },
+          { title: "With image", text: "a", image: { src: "/images/home/service-custom-software.jpg", alt: "Engineers writing code" } },
           { title: "Without image", text: "b" },
         ]}
       />,
@@ -70,7 +70,7 @@ describe("components/sections", () => {
       <CaseStudies
         title="Cases"
         items={[
-          { ...base, slug: "a", name: "A", image: { src: "/images/home/ai-assistant.jpg", alt: "AI assistant dashboard" } },
+          { ...base, slug: "a", name: "A", image: { src: "/images/home/ai-support-copilot.jpg", alt: "AI assistant dashboard" } },
           { ...base, slug: "b", name: "B" },
         ]}
       />,
@@ -85,7 +85,7 @@ describe("components/sections", () => {
         title="About Cortexia"
         text={["First paragraph.", "Second paragraph."]}
         points={["One", "Two", "Three"]}
-        image={{ src: "/images/home/company-team.jpg", alt: "Cortexia engineering team" }}
+        image={{ src: "/images/home/about-engineering-team.jpg", alt: "Cortexia engineering team" }}
         link={{ label: "Discover Our Story", href: "/about" }}
       />,
     );
@@ -96,11 +96,22 @@ describe("components/sections", () => {
     expect(container.querySelector('a[href="/about"]')?.textContent).toContain("Discover Our Story");
   });
 
-  it("mọi ảnh trong public/images/home ≤ 300 KB", () => {
-    const dir = join(process.cwd(), "public/images/home");
-    const files = readdirSync(dir);
+  it("mọi ảnh jpg/png trong public/images ≤ 300 KB", () => {
+    const root = join(process.cwd(), "public/images");
+    const files = readdirSync(root, { recursive: true, encoding: "utf8" }).filter((f) => /\.(jpe?g|png)$/i.test(f));
     expect(files.length).toBeGreaterThan(0);
-    for (const f of files) expect(statSync(join(dir, f)).size, f).toBeLessThanOrEqual(300 * 1024);
+    for (const f of files) expect(statSync(join(root, f)).size, f).toBeLessThanOrEqual(300 * 1024);
+  });
+
+  it("không ảnh nội dung nào được khai báo ở hai vị trí", () => {
+    const srcs = [
+      home.hero.image.src,
+      ...home.services.items.map((i) => i.image.src),
+      home.about.image.src,
+      ...serviceList.map((s) => s.image.src),
+      ...[featuredCase, ...portfolioCases, ...serviceCases, ...aiCases].flatMap((c) => (c.image ? [c.image.src] : [])),
+    ];
+    expect(new Set(srcs).size).toBe(srcs.length);
   });
 
   it("ảnh trang trí trong Cta có alt rỗng", () => {

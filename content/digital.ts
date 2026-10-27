@@ -137,7 +137,7 @@ export const serviceCases: CaseStudy[] = [
   },
 ];
 
-// Automation & AI projects shown on Home. Images reuse existing site photos until real project shots are available.
+// Automation & AI projects shown on Home. Each image is used only here (check-build rejects reused images).
 export const aiCases: CaseStudy[] = [
   {
     slug: "intelligent-process-automation",
@@ -150,7 +150,7 @@ export const aiCases: CaseStudy[] = [
       { metric: "85%", label: "Documents processed without manual entry" },
       { metric: "4x", label: "Faster claim turnaround" },
     ],
-    image: { src: "/images/home/ai-process-automation.jpg", alt: "Engineers reviewing an automated workflow dashboard" },
+    image: { src: "/images/home/ai-document-automation.jpg", alt: "Digital banking application" },
   },
   {
     slug: "llm-support-copilot",
@@ -163,7 +163,7 @@ export const aiCases: CaseStudy[] = [
       { metric: "60%", label: "Conversations resolved by the bot" },
       { metric: "40%", label: "Shorter average handling time" },
     ],
-    image: { src: "/images/home/ai-assistant.jpg", alt: "Cloud platform powering an AI customer assistant" },
+    image: { src: "/images/home/ai-support-copilot.jpg", alt: "Kubernetes cloud platform dashboard" },
   },
   {
     slug: "predictive-operations-automation",
@@ -176,7 +176,7 @@ export const aiCases: CaseStudy[] = [
       { metric: "30%", label: "Less unplanned downtime" },
       { metric: "92%", label: "Forecast accuracy" },
     ],
-    image: { src: "/images/home/ai-predictive-ops.jpg", alt: "Operations team monitoring predictive maintenance alerts" },
+    image: { src: "/images/home/ai-fleet-maintenance.jpg", alt: "Commercial fleet IoT telematics dashboard" },
   },
 ];
 

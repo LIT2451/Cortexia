@@ -17,3 +17,12 @@
 - Requirements: 1.2, 1.3
 - Commit: `spec(site-consistency): 2 Thêm quy tắc không trùng ảnh (cùng src trên…`
 - Ghi chú: Thêm kiểm tra src ảnh dùng >1 lần và trùng SHA-256. Lưu ý: bản sao ở Home là ảnh đã nén lại (khác byte, khác src) nên check không bắt được; task 3 xoá thủ công.
+
+## 3 Phân bổ lại ảnh theo bảng: lấy ảnh từ commit `300a79a`, nén, lưu vào `public/images/home/`, xoá bản sao cũ, nén 6 ảnh Services, cập nhật đường dẫn và alt trong content — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:50
+- File đã đổi: `content/digital.ts`, `content/pages.ts`, `public/images/home/about-engineering-team.jpg`, `public/images/home/ai-assistant.jpg`, `public/images/home/ai-document-automation.jpg`, `public/images/home/ai-fleet-maintenance.jpg`, `public/images/home/ai-predictive-ops.jpg`, `public/images/home/ai-process-automation.jpg`, `public/images/home/ai-support-copilot.jpg`, `public/images/home/company-team.jpg`, `public/images/home/service-custom-software.jpg`, `public/images/home/service-offshore-teams.jpg`, `public/images/home/service-software.jpg`, `public/images/home/service-teams.jpg`, `public/images/home/service-telecom-platform.jpg`, `public/images/home/service-telecom.jpg`, `public/images/services/service-cloud-devops.jpg`, `public/images/services/service-mobile-app.jpg`, `public/images/services/service-odc-teams.jpg`, `public/images/services/service-security-maintenance.jpg`, `public/images/services/service-software-eng.jpg`, `public/images/services/service-telecom-network.jpg`, `tests/sections.test.tsx`
+- Kiểm chứng: `pnpm build && pnpm check && pnpm test && test -z "$(find public/images -type f -size +300k)"` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 1.2, 1.4
+- Commit: `spec(site-consistency): 3 Phân bổ lại ảnh theo bảng: lấy ảnh từ commit…`
+- Ghi chú: 8 ảnh Home lấy từ 8 file site cũ khác nhau (blob khác ảnh Services), xoá bản sao; 6 ảnh Services nén về ≤300 KB; thêm test src không trùng và giới hạn 300 KB cho toàn public/images

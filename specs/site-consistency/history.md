@@ -35,3 +35,12 @@
 - Requirements: 1.5, 1.6
 - Commit: `spec(site-consistency): 4 Sửa nội dung theo bảng rà soát (a–h), cập…`
 - Ghi chú: a–h: hero Services/Portfolio viết lại (cập nhật legacy-text.json), case Services đổi sang Cloud Contact Center & VoIP, case AI đổi sang Predictive Fleet Maintenance, uptime 99.99%, bỏ link trùng Why Us, About bỏ Stats/Testimonials, meta Home và form thêm AI & Process Automation; thêm tests/content-consistency.test.tsx
+
+## 5 Chạy build, check, lint, test toàn bộ và sửa mọi lỗi — HOÀN THÀNH
+
+- Thời gian: 2026-10-27 11:52
+- File đã đổi: `app/opengraph-image.tsx`
+- Kiểm chứng: `pnpm build && pnpm check && pnpm lint && pnpm test` → exit 0 ((Use `node --trace-deprecation ...` to show where the warning was created)) [spec-done tự chạy lại]
+- Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6
+- Commit: `spec(site-consistency): 5 Chạy build, check, lint, test toàn bộ và sửa…`
+- Ghi chú: Bỏ eslint-disable thừa trong opengraph-image.tsx; build, check, lint, test (68) đều đạt

@@ -88,6 +88,6 @@ Rà soát nội dung:
 - [x] 4 Sửa nội dung theo bảng rà soát (a–h), cập nhật `legacy-text.json` và test liên quan
   - Kiểm chứng: `pnpm test` đạt
   - _Requirements: 1.5, 1.6_
-- [ ] 5 Chạy build, check, lint, test toàn bộ và sửa mọi lỗi
+- [x] 5 Chạy build, check, lint, test toàn bộ và sửa mọi lỗi
   - Kiểm chứng: `pnpm build && pnpm check && pnpm lint && pnpm test` đạt
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6_

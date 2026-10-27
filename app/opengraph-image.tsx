@@ -28,7 +28,6 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse renders plain img only */}
           <img src={icon} width={160} height={160} alt="" />
           <div style={{ fontSize: 112, fontWeight: 700 }}>{site.name}</div>
         </div>

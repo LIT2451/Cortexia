@@ -17,11 +17,17 @@ describe("Footer", () => {
     expect(screen.getByRole("link", { name: "Cortexia home" })).toBeTruthy();
   });
 
-  it("mọi href thuộc 5 URL nội bộ (4.2)", () => {
+  it("mọi href thuộc 5 URL nội bộ, ngoài link mailto:/tel: liên hệ (4.2)", () => {
     const { container } = render(<Footer />);
-    const hrefs = Array.from(container.querySelectorAll("a")).map((a) => a.getAttribute("href"));
+    const hrefs = Array.from(container.querySelectorAll("a")).map((a) => a.getAttribute("href")!);
     expect(hrefs.length).toBeGreaterThan(0);
-    for (const h of hrefs) expect(URLS).toContain(h);
+    for (const h of hrefs.filter((h) => !/^(mailto|tel):/.test(h))) expect(URLS).toContain(h);
+  });
+
+  it("hiển thị email và số điện thoại mẫu kèm link", () => {
+    const { container } = render(<Footer />);
+    expect(container.querySelector('a[href="mailto:contact@digitalcortexia.com"]')?.textContent).toBe("contact@digitalcortexia.com");
+    expect(container.querySelector('a[href="tel:+842432006688"]')?.textContent).toBe("+84 24 3200 6688");
   });
 
   it("không còn chữ của Template", () => {

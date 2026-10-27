@@ -3,9 +3,9 @@ import { navLinks, site } from "@/config/site";
 import { contactItems } from "@/lib/contact";
 
 describe("config/site", () => {
-  it("để trống email, phone, taxId ở bản đầu (2.7)", () => {
-    expect(site.email).toBe("");
-    expect(site.phone).toBe("");
+  it("có email, phone mẫu; taxId để trống", () => {
+    expect(site.email).toBe("contact@digitalcortexia.com");
+    expect(site.phone).toBe("+84 24 3200 6688");
     expect(site.taxId).toBe("");
   });
 
@@ -15,8 +15,11 @@ describe("config/site", () => {
 });
 
 describe("contactItems", () => {
-  it("chỉ còn địa chỉ với cấu hình mặc định (2.5)", () => {
-    expect(contactItems(site).map((i) => i.kind)).toEqual(["address"]);
+  it("cấu hình mặc định có địa chỉ, email, phone; ẩn taxId trống", () => {
+    const items = contactItems(site);
+    expect(items.map((i) => i.kind)).toEqual(["address", "email", "phone"]);
+    expect(items.find((i) => i.kind === "email")?.href).toBe("mailto:contact@digitalcortexia.com");
+    expect(items.find((i) => i.kind === "phone")?.href).toBe("tel:+842432006688");
   });
 
   it("sinh mailto: và tel: khi có giá trị (2.6)", () => {

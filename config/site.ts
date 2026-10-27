@@ -4,7 +4,7 @@ export type SiteConfig = {
   domain: "digitalcortexia.com";
   url: "https://digitalcortexia.com";
   address: string;
-  email: string; // empty until a real address is available
+  email: string; // empty string hides the item
   phone: string; // display format, e.g. "+84 9xx xxx xxx"
   taxId: string;
 };
@@ -14,8 +14,9 @@ export const site: SiteConfig = {
   domain: "digitalcortexia.com",
   url: "https://digitalcortexia.com",
   address: "Tầng 6, tòa C, 22 Thành Công, Ba Đình, Hà Nội",
-  email: "",
-  phone: "",
+  // SAMPLE contact details: replace email and phone with the real ones before going live.
+  email: "contact@digitalcortexia.com",
+  phone: "+84 24 3200 6688",
   taxId: "",
 };
 
